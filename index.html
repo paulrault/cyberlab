@@ -4,87 +4,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1426">
-  <meta name="description" content="CyberLab Academy V8, plateforme pédagogique pour le BTS SIO SISR.">
+  <meta name="theme-color" content="#0b1730">
+  <meta name="description" content="CyberLab Academy : entraînement BTS SIO SISR, cybersécurité et administration systèmes et réseaux.">
   <title>CyberLab Academy V8</title>
   <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/data.js"></script>
-  <script defer src="js/storage.js"></script>
-  <script defer src="js/app.js"></script>
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar" id="sidebar">
-      <a class="brand" href="#dashboard" aria-label="CyberLab Academy, accueil">
-        <span class="brand-mark">C<span>8</span></span>
-        <span class="brand-copy">
-          <strong>CyberLab Academy</strong>
-          <small>IT LEARNING CENTER</small>
-        </span>
-      </a>
+      <div class="brand">
+        <div class="brand-mark">CL</div>
+        <div>
+          <strong>CyberLab</strong>
+          <span>ACADEMY V8</span>
+        </div>
+      </div>
 
-      <div class="nav-label">ESPACE PERSONNEL</div>
-      <nav id="navigation" aria-label="Navigation principale">
+      <div class="profile-card">
+        <div class="profile-avatar">IT</div>
+        <div>
+          <strong>Technicien en formation</strong>
+          <small id="levelLabel">Niveau 1</small>
+        </div>
+      </div>
+
+      <nav id="navigation" class="navigation" aria-label="Navigation principale">
         <button class="nav-item active" data-page="dashboard"><span>▦</span> Tableau de bord</button>
-        <button class="nav-item" data-page="courses"><span>▤</span> Formations</button>
-        <button class="nav-item" data-page="missions"><span>⚑</span> Missions pratiques</button>
-        <button class="nav-item" data-page="quiz"><span>✎</span> Quiz et révisions</button>
-
-        <div class="nav-label">LABORATOIRE</div>
+        <button class="nav-item" data-page="courses"><span>▤</span> Formations BTS</button>
+        <button class="nav-item" data-page="missions"><span>✓</span> Missions pratiques</button>
+        <button class="nav-item" data-page="quiz"><span>?</span> Quiz et révisions</button>
         <button class="nav-item" data-page="network"><span>⌘</span> Laboratoire réseau</button>
-        <button class="nav-item" data-page="security"><span>⬡</span> Cybersécurité</button>
-        <button class="nav-item" data-page="monitoring"><span>◉</span> Supervision</button>
-        <button class="nav-item" data-page="docker"><span>▣</span> Docker simulé</button>
-
-        <div class="nav-label">DOCUMENTATION</div>
-        <button class="nav-item" data-page="journal"><span>▧</span> Carnet de bord</button>
+        <button class="nav-item" data-page="security"><span>◇</span> Sujets BTS cybersécurité</button>
+        <button class="nav-item" data-page="monitoring"><span>▥</span> Supervision</button>
+        <button class="nav-item" data-page="docker"><span>▣</span> Laboratoire Docker</button>
+        <button class="nav-item" data-page="journal"><span>☷</span> Carnet de bord</button>
         <button class="nav-item" data-page="settings"><span>⚙</span> Paramètres</button>
       </nav>
 
       <div class="sidebar-progress">
-        <div class="sidebar-progress-title">Ton parcours</div>
-        <div class="level-line">
-          <span id="levelLabel">Niveau 1</span>
+        <div class="row-between">
+          <span>Progression</span>
           <strong id="xpLabel">0 XP</strong>
         </div>
-        <div class="progress-track"><span id="levelProgress"></span></div>
-        <small id="levelHint">250 XP avant le niveau suivant</small>
+        <div class="progress-track">
+          <div id="levelProgress" class="progress-fill" style="width:0%"></div>
+        </div>
+        <small id="levelHint">Commence une formation pour progresser.</small>
       </div>
 
-      <div class="sidebar-footer">
-        <span class="status-dot"></span>
-        <span>Mode local actif</span>
-      </div>
+      <div class="sidebar-footer">Environnement pédagogique local</div>
     </aside>
 
-    <main class="main-area">
+    <div class="main-area">
       <header class="topbar">
-        <div class="topbar-left">
-          <button id="menuButton" class="icon-button mobile-only" aria-label="Ouvrir le menu">☰</button>
-          <div>
-            <div class="eyebrow">ESPACE DE FORMATION</div>
-            <h1 id="pageTitle">Tableau de bord</h1>
-          </div>
+        <button id="menuButton" class="icon-button" aria-label="Ouvrir le menu">☰</button>
+        <div class="topbar-heading">
+          <span class="eyebrow">ESPACE DE FORMATION</span>
+          <h1 id="pageTitle">Tableau de bord</h1>
         </div>
         <div class="topbar-actions">
-          <label class="global-search">
+          <label class="search-box">
             <span>⌕</span>
-            <input id="globalSearch" type="search" placeholder="Rechercher un cours..." aria-label="Rechercher">
-            <kbd>↵</kbd>
+            <input id="globalSearch" type="search" placeholder="Rechercher…" aria-label="Rechercher dans le site">
           </label>
-          <button id="themeButton" class="icon-button" aria-label="Changer de thème">☾</button>
+          <button id="themeButton" class="icon-button" aria-label="Changer de thème" title="Changer de thème">◐</button>
         </div>
       </header>
 
-      <section id="content" class="page-content" aria-live="polite"></section>
+      <main id="content" class="content" tabindex="-1">
+        <section class="card">
+          <h2>Chargement de CyberLab Academy…</h2>
+          <p>Si cette page reste affichée, vérifie que les fichiers JavaScript sont présents et correctement nommés.</p>
+        </section>
+      </main>
 
-      <footer class="page-footer">
-        CyberLab Academy V8 · Environnement pédagogique local
-        <span>Les laboratoires sont simulés et ne pilotent pas de systèmes réels.</span>
+      <footer class="main-footer">
+        <span>CyberLab Academy V8</span>
+        <span>Formation et simulation — aucune action sur un réseau réel</span>
       </footer>
-    </main>
+    </div>
   </div>
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
