@@ -4,589 +4,667 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101827">
-<title>CyberLab Academy V6</title>
+<meta name="theme-color" content="#0b1220">
+<title>CyberLab Academy V7</title>
 <style>
-:root {
-  --bg:#0b1120;--panel:#141e30;--panel2:#1b2940;
-  --text:#edf3ff;--muted:#9eacc4;--accent:#60a5fa;
-  --accent2:#38bdf8;--border:#293750;--green:#34d399;
-  --red:#fb7185;--orange:#fbbf24;
+:root{
+ --bg:#0b1220;--panel:#121d30;--panel2:#192740;--border:#2a3952;
+ --text:#eaf1ff;--muted:#99abc5;--accent:#60a5fa;--cyan:#22d3ee;
+ --green:#34d399;--orange:#fbbf24;--red:#fb7185;
 }
-body.light {
-  --bg:#eef3fa;--panel:#fff;--panel2:#f1f5fb;
-  --text:#17243a;--muted:#5f6e84;--accent:#2563eb;
-  --accent2:#0284c7;--border:#d5dfed;--green:#059669;
-  --red:#e11d48;--orange:#b45309;
+body.light{
+ --bg:#edf2f9;--panel:#fff;--panel2:#f2f6fc;--border:#d7e0ed;
+ --text:#18253b;--muted:#63738b;--accent:#2563eb;--cyan:#0284c7;
+ --green:#059669;--orange:#b45309;--red:#e11d48;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);
-font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.55}
+font:14px/1.6 Inter,Segoe UI,Arial,sans-serif}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-.app{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:100vh}
-.sidebar{background:var(--panel);border-right:1px solid var(--border);
-padding:22px 15px;position:sticky;top:0;height:100vh;overflow:auto}
-.brand{display:flex;align-items:center;gap:10px;padding:5px 8px 25px}
-.logo{width:42px;height:42px;border-radius:13px;display:grid;
-place-items:center;background:linear-gradient(135deg,#2563eb,#06b6d4);
-font-size:23px}
-.brand strong{display:block;font-size:17px}
-.brand small{color:var(--muted)}
-.nav-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;
-color:var(--muted);padding:14px 10px 6px}
-.nav button{display:flex;width:100%;gap:11px;align-items:center;
-border:0;background:transparent;color:var(--muted);padding:11px 12px;
-border-radius:10px;text-align:left;margin:3px 0}
-.nav button:hover,.nav button.active{background:var(--panel2);color:var(--text)}
-.nav button.active{box-shadow:inset 3px 0 var(--accent)}
-.sidebar-bottom{margin-top:25px;padding:13px;background:var(--panel2);
-border-radius:12px}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+ outline:2px solid var(--cyan);outline-offset:2px}
+.app{min-height:100vh;display:grid;grid-template-columns:250px minmax(0,1fr)}
+aside{height:100vh;position:sticky;top:0;overflow:auto;background:var(--panel);
+ border-right:1px solid var(--border);padding:20px 14px}
+.brand{display:flex;align-items:center;gap:11px;padding:4px 7px 22px}
+.brand-icon{display:grid;place-items:center;width:42px;height:42px;
+ border-radius:13px;background:linear-gradient(135deg,#2563eb,#06b6d4);
+ color:white;font-size:23px}
+.brand strong{display:block;font-size:16px}
+.brand small{color:var(--muted);font-size:11px}
+.nav-label{font-size:10px;letter-spacing:1.6px;text-transform:uppercase;
+ color:var(--muted);padding:13px 10px 5px}
+nav button{display:flex;align-items:center;gap:10px;width:100%;
+ background:transparent;border:0;border-radius:9px;color:var(--muted);
+ padding:10px;text-align:left;margin:2px 0}
+nav button:hover,nav button.active{background:var(--panel2);color:var(--text)}
+nav button.active{box-shadow:inset 3px 0 var(--accent)}
+.side-progress{margin-top:22px;padding:13px;background:var(--panel2);border-radius:12px}
 .small{font-size:12px;color:var(--muted)}
-.progress{height:7px;background:var(--border);border-radius:10px;overflow:hidden}
-.progress span{display:block;height:100%;background:var(--accent);
-border-radius:10px;transition:width .25s}
+.progress{height:7px;background:var(--border);border-radius:9px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--accent);border-radius:9px}
 main{min-width:0}
-.topbar{height:74px;border-bottom:1px solid var(--border);display:flex;
-align-items:center;justify-content:space-between;padding:0 28px;gap:12px}
-.topbar h2{font-size:19px;margin:0}
-.top-actions{display:flex;gap:9px;align-items:center}
-.content{padding:28px;max-width:1500px;margin:auto}
-.page-heading{display:flex;justify-content:space-between;align-items:center;
-gap:15px;margin-bottom:23px;flex-wrap:wrap}
-h1{font-size:28px;margin:0 0 5px;letter-spacing:-.6px}
-h3{margin:0 0 10px;font-size:17px}
-p{margin:6px 0}
+header{height:72px;padding:0 28px;border-bottom:1px solid var(--border);
+ display:flex;align-items:center;justify-content:space-between;gap:12px}
+header h2{font-size:17px;margin:0}
+.header-actions{display:flex;align-items:center;gap:8px}
+.content{max-width:1500px;margin:auto;padding:26px}
+.page-head{display:flex;justify-content:space-between;align-items:center;
+ flex-wrap:wrap;gap:14px;margin-bottom:23px}
+h1{font-size:27px;line-height:1.25;letter-spacing:-.5px;margin:0 0 5px}
+h2.section{font-size:18px;margin:27px 0 13px}
+h3{font-size:16px;margin:0 0 9px}
+p{margin:5px 0}
 .muted{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .card{background:var(--panel);border:1px solid var(--border);
-border-radius:16px;padding:19px;min-width:0}
-.stat{display:flex;justify-content:space-between;gap:10px;align-items:start}
-.stat-icon{font-size:23px;background:var(--panel2);border-radius:11px;
-padding:8px}
-.stat-value{font-size:28px;font-weight:750;margin-top:8px}
-.stat-label{font-size:13px;color:var(--muted)}
+ border-radius:14px;padding:18px;min-width:0}
+.stat-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.stat-icon{font-size:21px;padding:8px;border-radius:10px;background:var(--panel2)}
+.stat-number{font-size:27px;font-weight:750;letter-spacing:-.5px;margin-top:8px}
 .btn{border:1px solid var(--border);background:var(--panel2);color:var(--text);
-padding:9px 13px;border-radius:9px}
+ border-radius:9px;padding:9px 13px}
 .btn:hover{border-color:var(--accent)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:white}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 .btn.danger{color:var(--red)}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
-.pill{display:inline-block;padding:4px 9px;border-radius:20px;
-background:var(--panel2);color:var(--muted);font-size:12px}
-.pill.good{color:var(--green)}
-.pill.warn{color:var(--orange)}
-.section-title{margin:26px 0 13px}
-.course-icon{font-size:26px;margin-bottom:8px}
-.course-card{display:flex;flex-direction:column;gap:9px}
+.pill{display:inline-block;border-radius:20px;background:var(--panel2);
+ color:var(--muted);font-size:11px;padding:4px 9px}
+.pill.good{color:var(--green)}.pill.warn{color:var(--orange)}
+.field{display:grid;gap:5px;margin:12px 0}
+.field label{color:var(--muted);font-size:12px}
+input,select,textarea{width:100%;background:var(--bg);color:var(--text);
+ border:1px solid var(--border);border-radius:9px;padding:10px}
+textarea{min-height:115px;resize:vertical}
+.course-icon{font-size:27px;margin-bottom:8px}
+.course-card{display:flex;flex-direction:column;gap:8px}
 .course-card .actions{margin-top:auto}
-.field{display:flex;flex-direction:column;gap:6px;margin:10px 0}
-.field label{font-size:13px;color:var(--muted)}
-input,select,textarea{width:100%;padding:10px 11px;border-radius:9px;
-border:1px solid var(--border);background:var(--bg);color:var(--text)}
-textarea{min-height:110px;resize:vertical}
-pre,.terminal{background:#070d18;color:#b8f7cf;border:1px solid #253349;
-padding:15px;border-radius:11px;overflow:auto;white-space:pre-wrap;
-overflow-wrap:anywhere;min-height:70px;font-family:Consolas,monospace}
-.question{padding:15px 0;border-bottom:1px solid var(--border)}
-.answer{display:block;padding:9px;margin:7px 0;border:1px solid var(--border);
-border-radius:8px;cursor:pointer}
-.answer:has(input:checked){border-color:var(--accent);background:var(--panel2)}
-.answer input{width:auto;margin-right:8px}
+.row-between{display:flex;align-items:center;justify-content:space-between;gap:10px}
 table{width:100%;border-collapse:collapse}
-th,td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--border)}
-th{font-size:12px;color:var(--muted)}
+th,td{padding:10px 8px;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-size:11px}
 .table-wrap{overflow:auto}
-.empty{padding:28px;text-align:center;color:var(--muted)}
-.toast{position:fixed;right:20px;bottom:20px;background:var(--panel2);
-border:1px solid var(--border);padding:13px 18px;border-radius:12px;
-z-index:10;display:none;max-width:90vw}
-footer{padding:25px 0;color:var(--muted);font-size:12px;text-align:center}
+.terminal{font:13px/1.7 Consolas,monospace;background:#060c16;color:#b8f7cf;
+ border:1px solid #27354a;padding:15px;border-radius:10px;min-height:170px;
+ white-space:pre-wrap;overflow-wrap:anywhere;max-height:420px;overflow:auto}
+.quiz-option,.check-row{display:flex;gap:9px;align-items:flex-start;padding:9px;
+ border:1px solid var(--border);border-radius:8px;margin:7px 0}
+.quiz-option input,.check-row input{width:auto;margin-top:5px}
+.question{padding:13px 0;border-bottom:1px solid var(--border)}
+.empty{padding:24px;text-align:center;color:var(--muted)}
+.toast{display:none;position:fixed;right:18px;bottom:18px;z-index:10;
+ max-width:90%;padding:13px 17px;background:var(--panel2);
+ border:1px solid var(--border);border-radius:11px;box-shadow:0 8px 28px #0003}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:25px 0}
 .mobile-menu{display:none}
-@media(max-width:1000px){
+.search-wrap{max-width:340px;width:100%}
+@media(max-width:1050px){
  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
  .grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:700px){
  .app{grid-template-columns:1fr}
- .sidebar{position:fixed;z-index:5;left:-270px;width:245px;transition:left .2s}
- .sidebar.open{left:0}
+ aside{position:fixed;z-index:8;left:-270px;width:250px;transition:left .2s}
+ aside.open{left:0}
  .mobile-menu{display:inline-block}
- .topbar{padding:0 14px}
- .content{padding:18px 13px}
+ header{padding:0 13px}
+ .content{padding:18px 12px}
  .grid,.grid.two,.grid.three{grid-template-columns:1fr}
  h1{font-size:23px}
+ .search-wrap{max-width:150px}
 }
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="sidebar" id="sidebar">
-  <div class="brand">
-    <div class="logo">⌘</div>
-    <div><strong>CyberLab Academy</strong><small>Version 6.0 · SISR</small></div>
-  </div>
-  <nav class="nav" id="navigation">
-    <div class="nav-label">Espace de travail</div>
-    <button class="active" data-page="dashboard">▦ Tableau de bord</button>
-    <button data-page="courses">▤ Formations</button>
-    <button data-page="missions">⚑ Missions pratiques</button>
-    <button data-page="quiz">✎ Quiz et révisions</button>
-    <div class="nav-label">Laboratoire</div>
-    <button data-page="network">⌘ Calculateur réseau</button>
-    <button data-page="terminal">› Terminal simulé</button>
-    <button data-page="monitoring">◉ Supervision</button>
-    <div class="nav-label">Ressources</div>
-    <button data-page="glossary">▧ Glossaire IT</button>
-    <button data-page="journal">▣ Carnet de bord</button>
-    <button data-page="settings">⚙ Paramètres</button>
-  </nav>
-  <div class="sidebar-bottom">
-    <strong>🎓 Mon parcours</strong>
-    <p class="small" id="sideLevel">Niveau 1 · Débutant</p>
-    <div class="progress"><span id="sideProgress" style="width:0%"></span></div>
-    <p class="small" id="sideXP">0 XP</p>
-  </div>
+<aside id="sidebar">
+ <div class="brand">
+  <div class="brand-icon">⌘</div>
+  <div><strong>CyberLab Academy</strong><small>V7 · IT Learning Center</small></div>
+ </div>
+ <nav id="navigation">
+  <div class="nav-label">Vue générale</div>
+  <button class="active" data-page="dashboard">▦ Tableau de bord</button>
+  <button data-page="courses">▤ Formations</button>
+  <button data-page="missions">⚑ Missions</button>
+  <button data-page="quiz">✎ Quiz et examens blancs</button>
+  <div class="nav-label">Laboratoire</div>
+  <button data-page="network">⌘ Calculateur IP</button>
+  <button data-page="terminal">› Terminal simulé</button>
+  <button data-page="monitoring">◉ Supervision</button>
+  <button data-page="troubleshooting">⚒ Dépannage</button>
+  <div class="nav-label">Documentation</div>
+  <button data-page="glossary">▧ Glossaire</button>
+  <button data-page="journal">▣ Carnet de bord</button>
+  <button data-page="settings">⚙ Paramètres</button>
+ </nav>
+ <div class="side-progress">
+  <strong>🎓 Progression</strong>
+  <p id="sideLevel" class="small">Niveau 1 · Débutant</p>
+  <div class="progress"><span id="sideBar" style="width:0%"></span></div>
+  <p id="sideXP" class="small">0 XP</p>
+ </div>
 </aside>
 <main>
-  <header class="topbar">
-    <div style="display:flex;align-items:center;gap:12px">
-      <button class="btn mobile-menu" id="menuButton" aria-label="Ouvrir le menu">☰</button>
-      <h2 id="pageTitle">Tableau de bord</h2>
-    </div>
-    <div class="top-actions">
-      <span class="pill" id="headerLevel">Niveau 1</span>
-      <button class="btn" id="themeButton">☀ / ☾</button>
-    </div>
-  </header>
-  <div class="content" id="pageContent"></div>
+ <header>
+  <div class="row-between" style="justify-content:flex-start">
+   <button class="btn mobile-menu" id="menuButton" aria-label="Ouvrir le menu">☰</button>
+   <h2 id="pageTitle">Tableau de bord</h2>
+  </div>
+  <div class="header-actions">
+   <div class="search-wrap"><input id="globalSearch" placeholder="Rechercher..." aria-label="Recherche globale"></div>
+   <button class="btn" id="themeButton" aria-label="Changer de thème">☀</button>
+  </div>
+ </header>
+ <section class="content" id="content"></section>
 </main>
 </div>
-<div class="toast" id="toast" role="status"></div>
+<div id="toast" class="toast" role="status"></div>
 <script>
 "use strict";
-
-const $ = (s, root=document) => root.querySelector(s);
-const $$ = (s, root=document) => [...root.querySelectorAll(s)];
-
-const courses = [
- {id:"windows",icon:"🪟",title:"Windows Server",level:"Débutant",
-  desc:"Découvrir AD DS, les utilisateurs, les groupes et les partages.",
-  lessons:[
-   ["Active Directory","AD DS permet de centraliser les identités et les ressources d'un domaine Windows."],
-   ["Utilisateurs et groupes","Les utilisateurs représentent des identités. Les groupes facilitent l'attribution des droits."],
-   ["Partages réseau","Les autorisations de partage et les permissions NTFS doivent être configurées de façon cohérente."]
-  ]},
- {id:"linux",icon:"🐧",title:"Linux et Debian",level:"Débutant",
-  desc:"Commandes essentielles, utilisateurs, services et permissions.",
-  lessons:[
-   ["Se repérer dans le système","pwd affiche le répertoire courant. ls liste les fichiers et cd change de répertoire."],
-   ["Comptes et permissions","Les permissions classiques distinguent le propriétaire, le groupe et les autres utilisateurs."],
-   ["Services et journaux","systemctl permet de consulter les services. journalctl permet d'examiner les journaux systemd."]
-  ]},
- {id:"network",icon:"🌐",title:"Réseaux TCP/IP",level:"Intermédiaire",
-  desc:"Adresses IP, masques, passerelles, DNS et DHCP.",
-  lessons:[
-   ["IPv4 et masque","Une adresse IPv4 comporte 32 bits. Le masque distingue la partie réseau de la partie hôte."],
-   ["DNS et DHCP","DNS traduit les noms en informations réseau. DHCP fournit automatiquement une configuration IP."],
-   ["Passerelle et routage","La passerelle permet de joindre les réseaux qui ne sont pas directement accessibles."]
-  ]},
- {id:"security",icon:"🛡️",title:"Cybersécurité",level:"Intermédiaire",
-  desc:"Principes de sécurité, mises à jour, sauvegardes et pare-feu.",
-  lessons:[
-   ["Principe du moindre privilège","Chaque compte doit disposer uniquement des permissions nécessaires à ses missions."],
-   ["Sauvegardes","Une sauvegarde doit être protégée et des restaurations doivent être testées régulièrement."],
-   ["Pare-feu","Un pare-feu contrôle les flux selon des règles explicites et adaptées au besoin."]
-  ]},
- {id:"virtual",icon:"🖥️",title:"Virtualisation",level:"Intermédiaire",
-  desc:"Machines virtuelles, hyperviseurs, ressources et snapshots.",
-  lessons:[
-   ["Machine virtuelle","Une VM utilise des ressources virtuelles fournies par un hyperviseur."],
-   ["Réseaux virtuels","Les réseaux virtuels relient les VM entre elles et, selon la configuration, au réseau physique."],
-   ["Sauvegarde et snapshots","Un snapshot n'est pas une sauvegarde indépendante à long terme."]
-  ]},
- {id:"docker",icon:"🐳",title:"Docker et services",level:"Intermédiaire",
-  desc:"Conteneurs, images, ports, volumes et journaux.",
-  lessons:[
-   ["Images et conteneurs","Une image est un modèle utilisé pour créer un conteneur."],
-   ["Ports et volumes","Les ports publient des services. Les volumes permettent de conserver des données."],
-   ["Diagnostic","Les journaux, l'état du conteneur et les ports publiés aident au dépannage."]
-  ]}
-];
-
-const missions = [
- {id:"m1",title:"Créer un compte utilisateur",category:"Windows Server",xp:50,
-  desc:"Dans un environnement de test, créer un utilisateur et l'ajouter au groupe adapté.",
-  steps:["Vérifier l'OU cible.","Créer le compte avec un nom explicite.","Ajouter le compte au groupe prévu.","Tester l'accès avec ce compte."]},
- {id:"m2",title:"Diagnostiquer une panne DNS",category:"Réseau",xp:60,
-  desc:"Un poste ne résout plus les noms. Établir un diagnostic méthodique.",
-  steps:["Vérifier l'adresse IP et le DNS configuré.","Tester la passerelle.","Tester la résolution avec nslookup.","Consulter les journaux et documenter le résultat."]},
- {id:"m3",title:"Vérifier une sauvegarde",category:"Sécurité",xp:60,
-  desc:"Contrôler qu'une sauvegarde est exploitable et documenter la restauration.",
-  steps:["Identifier la sauvegarde attendue.","Vérifier la date et le résultat du dernier job.","Restaurer un fichier de test dans un emplacement séparé.","Noter le résultat et les actions correctives."]},
- {id:"m4",title:"Analyser un service Linux",category:"Linux",xp:50,
-  desc:"Simuler le diagnostic d'un service qui ne démarre plus.",
-  steps:["Consulter l'état du service.","Lire les journaux associés.","Vérifier la configuration et les dépendances.","Rédiger une conclusion sans modifier la production."]},
- {id:"m5",title:"Préparer un réseau de VM",category:"Virtualisation",xp:75,
-  desc:"Définir un plan IP et vérifier la connectivité entre machines de laboratoire.",
-  steps:["Choisir un réseau privé de test.","Définir adresses, masque et passerelle.","Éviter les conflits avec le réseau existant.","Tester la connectivité et documenter le schéma."]}
-];
-
-const questions = [
- {q:"Quel service centralise les identités dans un domaine Windows ?",a:["DNS uniquement","Active Directory Domain Services","DHCP","NAT"],correct:1,why:"AD DS centralise les objets et identités du domaine."},
- {q:"Quel protocole attribue automatiquement des paramètres IP ?",a:["SSH","HTTP","DHCP","SMTP"],correct:2,why:"DHCP distribue notamment adresse IP, masque et options réseau."},
- {q:"À quoi sert principalement le DNS ?",a:["Chiffrer les disques","Résoudre des noms","Créer des VLAN","Sauvegarder les fichiers"],correct:1,why:"DNS permet notamment de résoudre des noms en informations réseau."},
- {q:"Que représente /24 en IPv4 ?",a:["24 adresses","Un préfixe réseau de 24 bits","24 routeurs","Un port TCP"],correct:1,why:"/24 indique que 24 bits sont utilisés pour le préfixe réseau."},
- {q:"Quel outil consulte l'état d'un service systemd ?",a:["systemctl","mkdir","whoami uniquement","ipconfig"],correct:0,why:"systemctl permet de consulter et gérer les unités systemd."},
- {q:"Quel est le rôle d'une passerelle par défaut ?",a:["Remplacer le DNS","Joindre les réseaux distants","Attribuer des mots de passe","Créer des utilisateurs"],correct:1,why:"La passerelle sert à acheminer le trafic vers d'autres réseaux."},
- {q:"Un snapshot de VM remplace-t-il une sauvegarde ?",a:["Oui, toujours","Non","Seulement sous Linux","Seulement si la VM est arrêtée"],correct:1,why:"Un snapshot dépend généralement de l'environnement d'origine et ne remplace pas une stratégie de sauvegarde."},
- {q:"Quel principe limite les droits d'un compte ?",a:["Tout administrateur","Moindre privilège","Mot de passe partagé","Désactiver les mises à jour"],correct:1,why:"Le moindre privilège limite les permissions à ce qui est nécessaire."},
- {q:"Quelle commande Linux affiche les interfaces et adresses IP ?",a:["ip addr","dir /s","format","taskkill"],correct:0,why:"ip addr affiche les interfaces réseau et leurs adresses."},
- {q:"À quoi sert un volume Docker ?",a:["À augmenter automatiquement la RAM","À conserver des données","À remplacer le pare-feu","À créer une adresse publique"],correct:1,why:"Les volumes servent à persister les données au-delà du cycle de vie d'un conteneur."}
-];
-
-const glossary = [
- ["AD DS","Service Windows de gestion centralisée des identités et des ressources d'un domaine."],
- ["DHCP","Protocole d'attribution automatique des paramètres réseau."],
- ["DNS","Système de résolution de noms utilisé par les applications et services réseau."],
- ["VLAN","Segmentation logique d'un réseau de niveau 2."],
- ["CIDR","Notation d'un préfixe réseau, par exemple /24."],
- ["Pare-feu","Système qui filtre les flux réseau selon des règles."],
- ["Hyperviseur","Logiciel ou système qui exécute et gère des machines virtuelles."],
- ["Conteneur","Environnement isolé qui exécute une application avec ses dépendances."],
- ["SIEM","Plateforme qui centralise et analyse des événements de sécurité."],
- ["RPO","Perte maximale de données acceptable, exprimée en durée."],
- ["RTO","Durée cible de rétablissement d'un service après incident."],
- ["NTFS","Système de fichiers Windows qui prend notamment en charge les permissions."],
- ["SSH","Protocole sécurisé pour l'administration distante."],
- ["NAT","Mécanisme de traduction d'adresses réseau."],
- ["Supervision","Surveillance de la disponibilité, des performances et des alertes d'un système."]
-];
-
-const defaultState = {
- xp:0,completedLessons:[],completedMissions:[],quizHistory:[],
- notes:[],theme:"dark",quizBest:0
-};
-let state = loadState();
-let currentPage = "dashboard";
-let quizRun = null;
-let terminalHistory = [];
-
-function loadState(){
- try {
-   const saved=JSON.parse(localStorage.getItem("cyberlab-v6"));
-   return saved && typeof saved==="object" ? {...defaultState,...saved} : {...defaultState};
- } catch { return {...defaultState}; }
-}
-function saveState(){
- try { localStorage.setItem("cyberlab-v6",JSON.stringify(state)); }
- catch { toast("Impossible d'enregistrer : stockage local indisponible."); }
-}
-function esc(value){
- return String(value??"").replace(/[&<>"']/g,c=>({
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+const escapeHTML=s=>String(s??"").replace(/[&<>"']/g,c=>({
  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- }[c]));
+}[c]));
+const initialState={
+ xp:0,lessons:[],missions:[],quizHistory:[],notes:[],
+ theme:"dark",quizBest:0,missionChecks:{},troubleHistory:[]
+};
+function loadState(){
+ try{
+  const raw=JSON.parse(localStorage.getItem("cla-v7"));
+  if(!raw||typeof raw!=="object")return {...initialState};
+  return {...initialState,...raw,
+   lessons:Array.isArray(raw.lessons)?raw.lessons:[],
+   missions:Array.isArray(raw.missions)?raw.missions:[],
+   notes:Array.isArray(raw.notes)?raw.notes:[],
+   quizHistory:Array.isArray(raw.quizHistory)?raw.quizHistory:[],
+   missionChecks:raw.missionChecks&&typeof raw.missionChecks==="object"?raw.missionChecks:{}
+  };
+ }catch{return {...initialState};}
 }
-function toast(message){
- const el=$("#toast");el.textContent=message;el.style.display="block";
- clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.style.display="none",2600);
+let state=loadState(),page="dashboard",activeCourse=null,quiz=null;
+let activeTrouble=null;
+function save(){
+ try{localStorage.setItem("cla-v7",JSON.stringify(state));}
+ catch{notify("Le navigateur ne peut pas enregistrer les données.");}
+}
+function notify(msg){
+ const el=$("#toast");el.textContent=msg;el.style.display="block";
+ clearTimeout(notify.timer);notify.timer=setTimeout(()=>el.style.display="none",2700);
 }
 function level(){return Math.floor(state.xp/250)+1}
-function levelName(){
- const names=["Débutant","Technicien junior","Technicien confirmé","Administrateur junior","Administrateur confirmé","Expert"];
- return names[Math.min(level()-1,names.length-1)];
+function levelTitle(){
+ return ["Débutant","Technicien junior","Technicien confirmé","Administrateur junior",
+ "Administrateur confirmé","Expert"][Math.min(level()-1,5)];
 }
-function updateProgress(){
- const xpInLevel=state.xp%250;
- $("#sideLevel").textContent=`Niveau ${level()} · ${levelName()}`;
- $("#sideXP").textContent=`${state.xp} XP · ${250-xpInLevel} XP avant le prochain niveau`;
- $("#sideProgress").style.width=(xpInLevel/250*100)+"%";
- $("#headerLevel").textContent=`Niveau ${level()}`;
+function updateStats(){
+ const n=state.xp%250;
+ $("#sideLevel").textContent=`Niveau ${level()} · ${levelTitle()}`;
+ $("#sideXP").textContent=`${state.xp} XP · ${250-n} XP avant le prochain niveau`;
+ $("#sideBar").style.width=n/250*100+"%";
 }
-function awardXP(amount,message){
- state.xp+=amount;saveState();updateProgress();toast(`+${amount} XP · ${message}`);
+function award(xp,msg){
+ state.xp+=xp;save();updateStats();notify(`+${xp} XP — ${msg}`);
 }
-function go(page){
- currentPage=page;
- $$("#navigation button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
- $("#sidebar").classList.remove("open");
- render();
+const courses=[
+ {id:"win",icon:"🪟",name:"Windows Server",level:"Débutant",desc:"Active Directory, DNS, DHCP, GPO et partages.",
+  lessons:[
+   ["Active Directory","AD DS centralise les comptes, groupes, ordinateurs et ressources d'un domaine Windows."],
+   ["Utilisateurs et groupes","Créer des comptes et organiser les droits à l'aide de groupes adaptés."],
+   ["DNS et DHCP","DNS assure la résolution des noms ; DHCP distribue les paramètres IP."],
+   ["GPO et permissions","Les stratégies de groupe appliquent des paramètres. Les permissions doivent respecter le moindre privilège."]
+  ]},
+ {id:"deb",icon:"🐧",name:"Debian et Linux",level:"Débutant",desc:"Commandes, utilisateurs, services et journaux.",
+  lessons:[
+   ["Commandes essentielles","pwd affiche le dossier courant, ls liste les fichiers et cd change de répertoire."],
+   ["Utilisateurs et permissions","Les droits Linux distinguent propriétaire, groupe et autres."],
+   ["Services systemd","systemctl permet d'inspecter les services gérés par systemd."],
+   ["Journaux système","journalctl aide à examiner les événements et les erreurs."]
+  ]},
+ {id:"net",icon:"🌐",name:"Réseaux TCP/IP",level:"Intermédiaire",desc:"IPv4, CIDR, VLAN, routage, DNS et DHCP.",
+  lessons:[
+   ["Adressage IPv4","IPv4 utilise 32 bits. Le préfixe CIDR définit la partie réseau."],
+   ["Sous-réseaux","Le masque permet de déterminer le réseau et la plage d'adresses."],
+   ["VLAN et commutation","Les VLAN segmentent logiquement un réseau de niveau 2."],
+   ["Routage","Un routeur achemine les paquets entre réseaux IP."]
+  ]},
+ {id:"sec",icon:"🛡️",name:"Cybersécurité",level:"Intermédiaire",desc:"Durcissement, pare-feu, sauvegardes et journaux.",
+  lessons:[
+   ["Moindre privilège","Les comptes disposent uniquement des droits nécessaires."],
+   ["Sauvegardes fiables","Il faut protéger les sauvegardes et tester régulièrement leur restauration."],
+   ["Pare-feu","Les règles doivent autoriser uniquement les flux nécessaires."],
+   ["Gestion des incidents","Documenter les symptômes, préserver les informations utiles et suivre les procédures."]
+  ]},
+ {id:"virt",icon:"🖥️",name:"Virtualisation",level:"Intermédiaire",desc:"Hyperviseurs, VM, réseaux virtuels et sauvegardes.",
+  lessons:[
+   ["Hyperviseurs","Ils fournissent les ressources virtuelles nécessaires aux machines virtuelles."],
+   ["Réseaux virtuels","Les réseaux virtuels connectent les VM selon la topologie configurée."],
+   ["Ressources VM","CPU, RAM, stockage et réseau doivent être dimensionnés."],
+   ["Snapshots et sauvegardes","Un snapshot ne remplace pas une sauvegarde indépendante."]
+  ]},
+ {id:"dock",icon:"🐳",name:"Docker et services",level:"Intermédiaire",desc:"Conteneurs, volumes, ports et diagnostic.",
+  lessons:[
+   ["Images et conteneurs","Une image sert de modèle à la création d'un conteneur."],
+   ["Ports et volumes","Les ports exposent un service ; les volumes conservent les données."],
+   ["Logs et état","L'état, les journaux et la configuration permettent de diagnostiquer un conteneur."],
+   ["Mises à jour","Prévoir une sauvegarde et une procédure de retour arrière avant une mise à jour."]
+  ]},
+ {id:"super",icon:"📈",name:"Supervision IT",level:"Intermédiaire",desc:"Disponibilité, métriques, alertes et documentation.",
+  lessons:[
+   ["Indicateurs","CPU, mémoire, disque, disponibilité et latence donnent des indices sur l'état d'un service."],
+   ["Seuils et alertes","Les seuils doivent être adaptés au contexte pour limiter les alertes inutiles."],
+   ["Analyse des journaux","Comparer les événements avec l'heure de début de l'incident."],
+   ["Compte rendu","Documenter l'impact, les vérifications, la résolution et les actions préventives."]
+  ]}
+];
+const missions=[
+ {id:"ad",title:"Créer un compte de domaine",cat:"Windows Server",xp:50,
+ desc:"Préparer un compte de test et vérifier ses permissions.",
+ steps:["Identifier la bonne unité d'organisation.","Créer un compte de test avec un nom explicite.","Ajouter le compte au groupe prévu.","Vérifier les permissions et documenter le résultat."]},
+ {id:"dns",title:"Diagnostiquer une panne DNS",cat:"Réseau",xp:60,
+ desc:"Un poste accède à une adresse IP mais ne résout plus les noms.",
+ steps:["Vérifier l'adresse IP, le masque et la passerelle.","Vérifier le serveur DNS configuré.","Tester la résolution avec nslookup.","Consulter les journaux et consigner la conclusion."]},
+ {id:"dhcp",title:"Analyser un problème DHCP",cat:"Réseau",xp:60,
+ desc:"Un poste ne reçoit pas la configuration réseau attendue.",
+ steps:["Contrôler l'état de l'interface réseau.","Vérifier le réseau local et le VLAN.","Contrôler l'étendue et les baux DHCP dans le lab.","Documenter le diagnostic et la correction prévue."]},
+ {id:"backup",title:"Contrôler une sauvegarde",cat:"Sécurité",xp:75,
+ desc:"Vérifier qu'une sauvegarde permet réellement de restaurer des données.",
+ steps:["Identifier le jeu de sauvegarde attendu.","Contrôler sa date et le résultat du job.","Restaurer un fichier de test dans un emplacement séparé.","Noter le résultat et les actions correctives."]},
+ {id:"linux",title:"Diagnostiquer un service Linux",cat:"Linux",xp:50,
+ desc:"Un service fictif ne démarre plus.",
+ steps:["Consulter l'état du service avec systemctl.","Lire les journaux associés.","Vérifier configuration, permissions et dépendances.","Rédiger une conclusion et une proposition de correction."]},
+ {id:"docker",title:"Conteneur indisponible",cat:"Docker",xp:75,
+ desc:"Une application conteneurisée n'est plus accessible.",
+ steps:["Vérifier l'état du conteneur.","Consulter les journaux.","Contrôler les ports et la connectivité.","Vérifier les volumes et documenter les constats."]},
+ {id:"vlan",title:"Préparer un VLAN de test",cat:"Réseau",xp:80,
+ desc:"Concevoir une segmentation logique pour deux groupes de machines.",
+ steps:["Définir les besoins de séparation.","Choisir des identifiants VLAN et un plan IP.","Déterminer le routage nécessaire entre VLAN.","Prévoir des tests de connectivité et de filtrage."]},
+ {id:"monitor",title:"Analyser une alerte de supervision",cat:"Supervision",xp:60,
+ desc:"Un serveur fictif présente une charge CPU élevée.",
+ steps:["Vérifier la durée et l'évolution de l'alerte.","Comparer CPU, mémoire et activité des services.","Examiner les journaux autour de l'incident.","Documenter l'impact et les vérifications complémentaires."]}
+];
+const questions=[
+ {q:"Quel service gère les identités dans un domaine Windows ?",a:["DHCP","AD DS","NAT","NTP"],c:1,e:"AD DS centralise les identités et les ressources d'un domaine."},
+ {q:"Quel service attribue automatiquement les paramètres IP ?",a:["DNS","SSH","DHCP","SNMP"],c:2,e:"DHCP distribue l'adresse IP et d'autres paramètres réseau."},
+ {q:"À quoi sert DNS ?",a:["À résoudre des noms","À chiffrer un disque","À créer un VLAN","À sauvegarder une VM"],c:0,e:"DNS permet notamment de résoudre les noms en informations réseau."},
+ {q:"Que signifie le préfixe /24 ?",a:["24 hôtes","24 bits de préfixe réseau","24 VLAN","24 routeurs"],c:1,e:"Un préfixe /24 réserve 24 bits à la partie réseau."},
+ {q:"Quelle commande Linux affiche les interfaces et adresses IP ?",a:["ip addr","mkdir","whoami","shutdown"],c:0,e:"ip addr affiche les interfaces et leurs adresses."},
+ {q:"Quel principe limite les droits des comptes ?",a:["Compte partagé","Administrateur partout","Moindre privilège","Désactiver les mises à jour"],c:2,e:"Le moindre privilège limite les permissions au besoin réel."},
+ {q:"Un snapshot remplace-t-il une sauvegarde ?",a:["Toujours","Non","Seulement sous Linux","Seulement en production"],c:1,e:"Un snapshot dépend généralement du stockage et de l'environnement d'origine."},
+ {q:"Quel équipement route entre réseaux IP ?",a:["Clavier","Routeur","Écran","Point d'accès uniquement"],c:1,e:"Un routeur achemine les paquets entre réseaux."},
+ {q:"Quel outil aide à consulter les journaux systemd ?",a:["journalctl","format","ping uniquement","mkdir"],c:0,e:"journalctl permet de consulter les journaux du système."},
+ {q:"À quoi sert un volume Docker ?",a:["À conserver des données","À remplacer le DNS","À chiffrer tout le réseau","À créer un VLAN"],c:0,e:"Les volumes permettent de conserver les données des conteneurs."},
+ {q:"Quel est le rôle d'un pare-feu ?",a:["Créer les comptes","Filtrer les flux réseau","Attribuer des IP automatiquement","Remplacer les sauvegardes"],c:1,e:"Un pare-feu autorise ou bloque les flux selon des règles."},
+ {q:"Que signifie RTO ?",a:["Durée cible de rétablissement","Adresse du routeur","Type de VLAN","Journal DNS"],c:0,e:"Le RTO est l'objectif de temps de rétablissement d'un service."},
+ {q:"Quel protocole est conçu pour l'administration distante sécurisée ?",a:["FTP non chiffré","SSH","Telnet","HTTP seul"],c:1,e:"SSH permet notamment une administration distante chiffrée."},
+ {q:"Que fait un VLAN ?",a:["Segmente logiquement le réseau","Augmente la RAM","Remplace le routeur dans tous les cas","Crée une sauvegarde"],c:0,e:"Un VLAN forme un domaine logique de niveau 2."},
+ {q:"Que vérifier avant de modifier un service en production ?",a:["Rien","Uniquement le nom","Impact, sauvegarde et procédure de retour arrière","Supprimer les logs"],c:2,e:"Il faut anticiper l'impact, préserver les données et préparer le retour arrière."}
+];
+const glossary=[
+ ["AD DS","Service de gestion centralisée des identités d'un domaine Windows."],
+ ["DHCP","Protocole d'attribution automatique des paramètres réseau."],
+ ["DNS","Système de résolution de noms."],
+ ["VLAN","Segmentation logique d'un réseau de niveau 2."],
+ ["CIDR","Notation d'un préfixe réseau, par exemple /24."],
+ ["RTO","Objectif de durée pour rétablir un service."],
+ ["RPO","Perte maximale de données acceptable exprimée en durée."],
+ ["NTFS","Système de fichiers Windows prenant en charge des permissions."],
+ ["SSH","Protocole sécurisé d'administration distante."],
+ ["NAT","Traduction d'adresses réseau."],
+ ["Hyperviseur","Système qui exécute et gère des machines virtuelles."],
+ ["Conteneur","Environnement isolé pour exécuter une application."],
+ ["SIEM","Outil de centralisation et d'analyse d'événements de sécurité."],
+ ["Supervision","Surveillance de la disponibilité, des performances et des alertes."],
+ ["Moindre privilège","Attribution des seuls droits nécessaires à une tâche."],
+ ["GPO","Stratégie de groupe Windows qui applique des paramètres."],
+ ["SNMP","Protocole couramment utilisé pour superviser des équipements."],
+ ["Pare-feu","Système de filtrage des flux réseau."]
+];
+function progress(c){
+ const n=c.lessons.filter((_,i)=>state.lessons.includes(c.id+":"+i)).length;
+ return {n,total:c.lessons.length,pct:Math.round(n/c.lessons.length*100)};
 }
-function heading(title,subtitle,action=""){
- return `<div class="page-heading"><div><h1>${title}</h1><p class="muted">${subtitle}</p></div>${action}</div>`;
+function head(title,sub,extra=""){
+ return `<div class="page-head"><div><h1>${title}</h1><p class="muted">${sub}</p></div>${extra}</div>`;
 }
-function cardStat(icon,label,value,detail){
- return `<div class="card"><div class="stat"><span class="stat-label">${label}</span><span class="stat-icon">${icon}</span></div><div class="stat-value">${value}</div><p class="small">${detail}</p></div>`;
-}
-function courseProgress(c){
- const done=c.lessons.filter((_,i)=>state.completedLessons.includes(c.id+"-"+i)).length;
- return {done,total:c.lessons.length,pct:Math.round(done/c.lessons.length*100)};
+function stat(icon,label,value,desc){
+ return `<article class="card"><div class="stat-top"><span class="muted">${label}</span><span class="stat-icon">${icon}</span></div><div class="stat-number">${value}</div><p class="small">${desc}</p></article>`;
 }
 function dashboard(){
- const lessons=state.completedLessons.length;
- const missionCount=state.completedMissions.length;
- const best=state.quizBest||0;
- return heading("Bienvenue dans CyberLab Academy 👋","Ton espace de formation et de simulation informatique.")+
+ const total=courses.reduce((n,c)=>n+c.lessons.length,0);
+ const pct=Math.round(state.lessons.length/total*100);
+ return head("Centre de contrôle","Bienvenue sur ton espace d'apprentissage SISR.")+
  `<div class="grid">
- ${cardStat("⚡","Expérience",state.xp+" XP","Continue à apprendre pour progresser.")}
- ${cardStat("📚","Leçons terminées",lessons,courses.reduce((n,c)=>n+c.lessons.length,0)+" leçons disponibles.")}
- ${cardStat("⚑","Missions réussies",missionCount,missions.length+" missions au total.")}
- ${cardStat("🎯","Meilleur quiz",best+"%","Ton meilleur score enregistré.")}
+ ${stat("⚡","Expérience",state.xp+" XP","Progression personnelle")}
+ ${stat("📚","Leçons",state.lessons.length+"/"+total,pct+" % du programme")}
+ ${stat("⚑","Missions",state.missions.length+"/"+missions.length,"Missions validées")}
+ ${stat("🎯","Meilleur quiz",(state.quizBest||0)+"%","Meilleur score enregistré")}
  </div>
- <h2 class="section-title">Reprendre la formation</h2>
- <div class="grid three">${courses.slice(0,3).map(c=>{
- const p=courseProgress(c);
- return `<article class="card course-card"><div class="course-icon">${c.icon}</div><h3>${c.title}</h3><p class="muted">${c.desc}</p><div class="progress"><span style="width:${p.pct}%"></span></div><span class="small">${p.done}/${p.total} leçons · ${p.pct}%</span><div class="actions"><button class="btn primary" data-course="${c.id}">Ouvrir le cours</button></div></article>`;
- }).join("")}</div>
- <h2 class="section-title">Accès rapide au laboratoire</h2>
+ <h2 class="section">Reprendre la formation</h2>
+ <div class="grid three">${courses.slice(0,3).map(c=>courseCard(c)).join("")}</div>
+ <h2 class="section">Accès rapide</h2>
  <div class="grid three">
- <article class="card"><h3>🌐 Réseau</h3><p class="muted">Calculer un sous-réseau IPv4 et son nombre d'hôtes.</p><button class="btn" data-go="network">Ouvrir le calculateur</button></article>
- <article class="card"><h3>› Terminal</h3><p class="muted">S'exercer avec des commandes fictives sans toucher au système.</p><button class="btn" data-go="terminal">Ouvrir le terminal</button></article>
- <article class="card"><h3>◉ Supervision</h3><p class="muted">Examiner l'état de serveurs fictifs et les incidents simulés.</p><button class="btn" data-go="monitoring">Voir les serveurs</button></article>
- </div>`;
+ <article class="card"><h3>🌐 Réseau</h3><p class="muted">Calculer un masque, un réseau et une plage d'adresses.</p><button class="btn" data-go="network">Ouvrir le calculateur</button></article>
+ <article class="card"><h3>⚒ Dépannage</h3><p class="muted">Résoudre des scénarios informatiques guidés.</p><button class="btn" data-go="troubleshooting">Lancer un scénario</button></article>
+ <article class="card"><h3>📈 Supervision</h3><p class="muted">Analyser des métriques fictives et leurs alertes.</p><button class="btn" data-go="monitoring">Voir les serveurs</button></article>
+ </div>
+ <h2 class="section">Objectif de progression</h2>
+ <div class="card"><div class="row-between"><strong>Formation terminée</strong><strong>${pct}%</strong></div><div class="progress" style="margin:12px 0"><span style="width:${pct}%"></span></div><p class="muted">Termine une leçon, puis entraîne-toi sur une mission associée.</p></div>`;
+}
+function courseCard(c){
+ const p=progress(c);
+ return `<article class="card course-card"><div class="course-icon">${c.icon}</div><span class="pill">${c.level}</span><h3>${c.name}</h3><p class="muted">${c.desc}</p><div class="progress"><span style="width:${p.pct}%"></span></div><span class="small">${p.n}/${p.total} leçons · ${p.pct}%</span><div class="actions"><button class="btn primary" data-course="${c.id}">Ouvrir le parcours</button></div></article>`;
 }
 function coursesPage(){
- return heading("Formations","Progresse à ton rythme. Les leçons terminées sont enregistrées localement.")+
- `<div class="grid three">${courses.map(c=>{
- const p=courseProgress(c);
- return `<article class="card course-card"><div class="course-icon">${c.icon}</div><span class="pill">${c.level}</span><h3>${c.title}</h3><p class="muted">${c.desc}</p><div class="progress"><span style="width:${p.pct}%"></span></div><span class="small">${p.done}/${p.total} leçons terminées</span><div class="actions"><button class="btn primary" data-course="${c.id}">Consulter le cours</button></div></article>`;
- }).join("")}</div>`;
+ return head("Parcours de formation","Des modules progressifs pour les systèmes, les réseaux et la sécurité.")+
+ `<div class="grid three">${courses.map(courseCard).join("")}</div>`;
 }
-function coursePage(id){
+function courseDetail(id){
  const c=courses.find(x=>x.id===id);if(!c)return coursesPage();
- return heading(c.title,c.desc,'<button class="btn" data-go="courses">← Formations</button>')+
+ return head(c.name,c.desc,'<button class="btn" data-go="courses">← Tous les cours</button>')+
  `<div class="grid two">${c.lessons.map((l,i)=>{
- const key=c.id+"-"+i,done=state.completedLessons.includes(key);
- return `<article class="card"><span class="pill">${done?"Terminée":"Leçon "+(i+1)}</span><h3 style="margin-top:12px">${esc(l[0])}</h3><p>${esc(l[1])}</p><div class="actions">${done?'<span class="pill good">✓ Acquise</span>':`<button class="btn primary" data-lesson="${key}">Marquer comme terminée (+25 XP)</button>`}</div></article>`;
+ const key=c.id+":"+i,done=state.lessons.includes(key);
+ return `<article class="card"><span class="pill">${done?"Terminée":"Leçon "+(i+1)}</span><h3 style="margin-top:12px">${l[0]}</h3><p>${l[1]}</p>${done?'<p class="pill good">✓ Leçon acquise</p>':`<button class="btn primary" style="margin-top:12px" data-lesson="${key}">Valider la leçon · +25 XP</button>`}</article>`;
  }).join("")}</div>`;
 }
 function missionsPage(){
- return heading("Missions pratiques","Entraîne-toi sur des scénarios fictifs. Valide une mission après avoir réalisé les étapes dans ton propre laboratoire.")+
+ return head("Missions pratiques","Coche chaque étape réalisée avant de valider une mission.")+
  `<div class="grid two">${missions.map(m=>{
- const done=state.completedMissions.includes(m.id);
- return `<article class="card"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span class="pill">${m.category}</span><span class="pill">${m.xp} XP</span></div><h3 style="margin-top:13px">${m.title}</h3><p class="muted">${m.desc}</p><details><summary>Voir les étapes de la mission</summary><ol>${m.steps.map(s=>`<li>${s}</li>`).join("")}</ol></details><div class="actions">${done?'<span class="pill good">✓ Mission validée</span>':`<button class="btn primary" data-mission="${m.id}">Valider la mission</button>`}</div></article>`;
+ const done=state.missions.includes(m.id),checks=state.missionChecks[m.id]||[];
+ return `<article class="card"><div class="row-between"><span class="pill">${m.cat}</span><span class="pill">${m.xp} XP</span></div><h3 style="margin-top:12px">${m.title}</h3><p class="muted">${m.desc}</p><div style="margin-top:12px">${m.steps.map((s,i)=>`<label class="check-row"><input type="checkbox" data-check="${m.id}:${i}" ${checks.includes(i)?"checked":""} ${done?"disabled":""}><span>${s}</span></label>`).join("")}</div><div class="actions">${done?'<span class="pill good">✓ Mission validée</span>':`<button class="btn primary" data-finish-mission="${m.id}" ${checks.length<m.steps.length?"disabled":""}>Valider · +${m.xp} XP</button>`}</div></article>`;
  }).join("")}</div>`;
 }
 function quizPage(){
- if(quizRun){
-  return heading("Quiz de révision","Choisis une réponse pour chaque question.")+
-  `<form id="quizForm"><div class="card">${quizRun.map((q,i)=>`<div class="question"><strong>${i+1}. ${q.q}</strong>${q.a.map((a,j)=>`<label class="answer"><input type="radio" name="q${i}" value="${j}" required> ${esc(a)}</label>`).join("")}</div>`).join("")}<div class="actions"><button class="btn primary" type="submit">Corriger le quiz</button><button class="btn" type="button" id="cancelQuiz">Annuler</button></div></div></form>`;
+ if(quiz){
+  return head("Quiz de révision","Sélectionne une réponse pour chaque question.")+
+  `<form id="quizForm"><div class="card">${quiz.map((q,i)=>`<div class="question"><strong>${i+1}. ${q.q}</strong>${q.a.map((a,j)=>`<label class="quiz-option"><input type="radio" name="q${i}" value="${j}" required><span>${a}</span></label>`).join("")}</div>`).join("")}<div class="actions"><button class="btn primary">Corriger mes réponses</button><button type="button" class="btn" data-cancel-quiz>Annuler</button></div></div></form>`;
  }
- const recent=state.quizHistory.slice(-5).reverse();
- return heading("Quiz et révisions","Teste tes connaissances avec un questionnaire aléatoire.")+
- `<div class="grid two"><div class="card"><h3>🎯 Quiz général SISR</h3><p class="muted">10 questions · Correction expliquée · XP selon le résultat.</p><button class="btn primary" id="startQuiz">Commencer le quiz</button></div><div class="card"><h3>📈 Tes résultats</h3><div class="stat-value">${state.quizBest||0}%</div><p class="muted">Meilleur score enregistré</p><p>Nombre de quiz : ${state.quizHistory.length}</p></div></div>
- <h2 class="section-title">Historique récent</h2><div class="card table-wrap">${recent.length?`<table><thead><tr><th>Date</th><th>Score</th><th>Résultat</th></tr></thead><tbody>${recent.map(x=>`<tr><td>${esc(x.date)}</td><td>${x.score}%</td><td>${x.correct}/${x.total}</td></tr>`).join("")}</tbody></table>`:'<p class="empty">Aucun quiz réalisé pour le moment.</p>'}</div>`;
+ return head("Quiz et examens blancs","Révise les notions clés du BTS SIO SISR.")+
+ `<div class="grid two"><article class="card"><h3>🎯 Quiz aléatoire</h3><p class="muted">10 questions · Correction expliquée · 10 XP par bonne réponse.</p><button class="btn primary" data-start-quiz>Commencer</button></article><article class="card"><h3>📊 Meilleur score</h3><div class="stat-number">${state.quizBest||0}%</div><p class="muted">${state.quizHistory.length} quiz enregistrés</p></article></div>
+ <h2 class="section">Historique</h2><div class="card table-wrap">${state.quizHistory.length?`<table><thead><tr><th>Date</th><th>Score</th><th>Réponses justes</th></tr></thead><tbody>${state.quizHistory.slice(-10).reverse().map(x=>`<tr><td>${escapeHTML(x.date)}</td><td>${x.score}%</td><td>${x.correct}/${x.total}</td></tr>`).join("")}</tbody></table>`:'<p class="empty">Aucun résultat. Lance ton premier quiz !</p>'}</div>`;
 }
 function networkPage(){
- return heading("Calculateur IPv4 / CIDR","Outil pédagogique pour calculer un sous-réseau IPv4.")+
- `<div class="card"><form id="networkForm"><div class="grid two"><div class="field"><label for="ipInput">Adresse IPv4</label><input id="ipInput" value="192.168.10.25" required placeholder="192.168.1.10"></div><div class="field"><label for="cidrInput">Préfixe CIDR</label><select id="cidrInput">${Array.from({length:33},(_,i)=>32-i).map(n=>`<option value="${n}" ${n===24?"selected":""}>/${n}</option>`).join("")}</select></div></div><button class="btn primary" type="submit">Calculer le sous-réseau</button></form><div id="networkResult" style="margin-top:18px"></div></div>
- <p class="small">Le calculateur traite les adresses IPv4 privées ou publiques. Il ne modifie aucune configuration réseau.</p>`;
+ return head("Calculateur IPv4 / CIDR","Calcule le réseau, le masque, la diffusion et les hôtes utilisables.")+
+ `<div class="card"><form id="ipForm"><div class="grid two"><div class="field"><label for="ip">Adresse IPv4</label><input id="ip" value="192.168.10.25" required></div><div class="field"><label for="prefix">Préfixe CIDR</label><select id="prefix">${Array.from({length:33},(_,i)=>32-i).map(n=>`<option value="${n}" ${n===24?"selected":""}>/${n}</option>`).join("")}</select></div></div><button class="btn primary">Calculer</button></form><div id="ipResult" style="margin-top:17px"></div></div>`;
 }
-function ipToInt(ip){
+function ipNumber(ip){
  const p=ip.split(".");
- if(p.length!==4||p.some(x=>!/^\d{1,3}$/.test(x)||+x>255))return null;
- return p.reduce((n,x)=>((n*256)+Number(x))>>>0,0)>>>0;
+ if(p.length!==4||p.some(x=>!/^\d{1,3}$/.test(x)||Number(x)>255))return null;
+ return p.reduce((a,x)=>a*256+Number(x),0)>>>0;
 }
-function intToIP(n){return [n>>>24,(n>>>16)&255,(n>>>8)&255,n&255].join(".")}
-function calculateNetwork(ip,cidr){
- const num=ipToInt(ip);
- if(num===null)return {error:"Adresse IPv4 invalide. Exemple attendu : 192.168.1.10"};
- const prefix=Number(cidr);
- if(!Number.isInteger(prefix)||prefix<0||prefix>32)return {error:"Préfixe CIDR invalide."};
- const mask=prefix===0?0:(0xffffffff<<(32-prefix))>>>0;
- const network=(num&mask)>>>0;
- const broadcast=(network|(~mask))>>>0;
- const total=2**(32-prefix);
- let first=network,last=broadcast,usable=total;
- if(prefix<=30){first=(network+1)>>>0;last=(broadcast-1)>>>0;usable=total-2}
- else if(prefix===31){usable=2;first=network;last=broadcast}
- else{usable=1;first=network;last=network}
- return {ip,mask:intToIP(mask),network:intToIP(network),broadcast:intToIP(broadcast),
- first:intToIP(first),last:intToIP(last),total,usable,prefix};
+function ipString(n){return [n>>>24,(n>>>16)&255,(n>>>8)&255,n&255].join(".")}
+function calculate(ip,prefix){
+ const n=ipNumber(ip),p=Number(prefix);
+ if(n===null)return {error:"Adresse IPv4 invalide."};
+ const mask=p===0?0:(0xffffffff<<(32-p))>>>0;
+ const net=(n&mask)>>>0,bcast=(net|(~mask))>>>0;
+ const total=2**(32-p);
+ let first=net,last=bcast,hosts=total;
+ if(p<=30){first=net+1;last=bcast-1;hosts=total-2}
+ else if(p===31){hosts=2}
+ else hosts=1;
+ return {ip,mask:ipString(mask),net:ipString(net),bcast:ipString(bcast),
+ first:ipString(first),last:ipString(last),total,hosts,p};
 }
-function networkResult(n){
- if(n.error)return `<p style="color:var(--red)">${esc(n.error)}</p>`;
- return `<div class="grid two">${[
- ["Adresse saisie",n.ip],["Masque réseau",n.mask],["Adresse réseau",n.network],
- ["Adresse de diffusion",n.broadcast],["Première adresse utilisable",n.first],
- ["Dernière adresse utilisable",n.last],["Adresses totales",n.total.toLocaleString("fr-FR")],
- ["Hôtes utilisables (estimation)",n.usable.toLocaleString("fr-FR")]
- ].map(([k,v])=>`<div class="card" style="padding:13px"><span class="small">${k}</span><div style="font-weight:700;overflow-wrap:anywhere">${v}</div></div>`).join("")}</div><p class="small" style="margin-top:12px">Attention : les préfixes /31 et /32 ont des usages particuliers. Le nombre d'hôtes est adapté à leur interprétation courante.</p>`;
+function showIP(r){
+ if(r.error)return `<p style="color:var(--red)">${r.error}</p>`;
+ const entries=[["Adresse","ip"],["Masque","mask"],["Adresse réseau","net"],
+ ["Broadcast","bcast"],["Premier hôte","first"],["Dernier hôte","last"],
+ ["Adresses totales","total"],["Hôtes utilisables","hosts"]];
+ return `<div class="grid two">${entries.map(([label,key])=>`<div class="card"><span class="small">${label}</span><div style="font-size:18px;font-weight:700;overflow-wrap:anywhere">${typeof r[key]==="number"?r[key].toLocaleString("fr-FR"):r[key]}</div></div>`).join("")}</div><p class="small" style="margin-top:12px">Les préfixes /31 et /32 ont des usages particuliers. Vérifie toujours le contexte réseau avant d'appliquer un plan d'adressage.</p>`;
 }
 function terminalPage(){
- return heading("Terminal simulé","Environnement fictif : aucune commande n'est exécutée sur ton ordinateur ou un serveur.")+
- `<div class="card"><div class="terminal" id="terminalOutput">CyberLab Academy — terminal pédagogique V6\nTape help pour afficher les commandes disponibles.\n$ </div><form id="terminalForm" style="display:flex;gap:8px;margin-top:12px"><input id="terminalInput" aria-label="Commande simulée" autocomplete="off" placeholder="help, ipconfig, ip addr, ping 192.168.1.1"><button class="btn primary">Exécuter</button></form><div class="actions"><button class="btn" data-command="help">help</button><button class="btn" data-command="ipconfig">ipconfig</button><button class="btn" data-command="ip addr">ip addr</button><button class="btn" data-command="ip route">ip route</button><button class="btn" data-command="clear">clear</button></div></div>`;
+ return head("Terminal simulé","Aucune commande n'est exécutée sur ton ordinateur ou sur un serveur.")+
+ `<div class="card"><div class="terminal" id="termOut">CyberLab Academy V7 — simulation pédagogique\nTape help pour voir les commandes disponibles.\n$ </div><form id="termForm" style="display:flex;gap:8px;margin-top:12px"><input id="termInput" placeholder="help, ipconfig, ip addr, ip route, ping 192.168.1.1" autocomplete="off" aria-label="Commande"><button class="btn primary">Exécuter</button></form><div class="actions">${["help","ipconfig","ip addr","ip route","ping 192.168.10.1","clear"].map(x=>`<button class="btn" data-cmd="${x}">${x}</button>`).join("")}</div></div>`;
 }
-function runCommand(command){
- const out=$("#terminalOutput");if(!out)return;
- const cmd=command.trim();if(!cmd)return;
- if(cmd==="clear"){out.textContent="CyberLab Academy — terminal pédagogique V6\n$ ";return}
- let result="";
- if(cmd==="help")result="Commandes simulées : help, ipconfig, ip addr, ip route, ping <IP>, clear";
- else if(cmd==="ipconfig")result="Carte Ethernet (simulation)\nIPv4 : 192.168.10.25\nMasque : 255.255.255.0\nPasserelle : 192.168.10.254\nDNS : 192.168.10.10";
- else if(cmd==="ip addr")result="2: eth0: <UP>\n    inet 192.168.10.25/24";
- else if(cmd==="ip route")result="default via 192.168.10.254 dev eth0\n192.168.10.0/24 dev eth0";
- else if(/^ping\s+[\w.:-]+$/i.test(cmd))result="PING simulé : aucune requête réseau réelle n'a été envoyée.\nRésultat pédagogique : 4 paquets simulés, 0 % de perte.";
- else result="Commande inconnue. Tape help pour afficher les commandes prises en charge.";
- out.textContent+=cmd+"\n"+result+"\n$ ";
- out.scrollTop=out.scrollHeight;
+function runCommand(cmd){
+ const out=$("#termOut");if(!out)return;
+ cmd=cmd.trim();if(!cmd)return;
+ if(cmd==="clear"){out.textContent="CyberLab Academy V7 — simulation pédagogique\n$ ";return}
+ const results={
+  help:"Commandes disponibles : help, ipconfig, ip addr, ip route, ping <IP>, clear",
+  ipconfig:"Ethernet (simulation)\nIPv4 : 192.168.10.25\nMasque : 255.255.255.0\nPasserelle : 192.168.10.254\nDNS : 192.168.10.10",
+  "ip addr":"2: eth0: <UP>\n    inet 192.168.10.25/24",
+  "ip route":"default via 192.168.10.254 dev eth0\n192.168.10.0/24 dev eth0"
+ };
+ let result=results[cmd];
+ if(!result&&/^ping\s+[\d.]+$/.test(cmd))result="Ping fictif : aucune requête réelle n'a été envoyée.\nRésultat pédagogique simulé : 4 réponses, 0 % de perte.";
+ if(!result)result="Commande non prise en charge. Tape help.";
+ out.textContent+=cmd+"\n"+result+"\n$ ";out.scrollTop=out.scrollHeight;
 }
+let simulatedDown=new Set(["APP-TEST"]);
 function monitoringPage(){
  const servers=[
- {name:"SRV-AD01",ip:"192.168.10.10",role:"Active Directory / DNS",cpu:24,ram:48,status:"OK"},
- {name:"SRV-FICHIERS",ip:"192.168.10.20",role:"Partages réseau",cpu:36,ram:62,status:"OK"},
- {name:"DEBIAN-DOCKER",ip:"192.168.10.30",role:"Conteneurs",cpu:78,ram:81,status:"Alerte"},
- {name:"FW-LAB",ip:"192.168.10.254",role:"Passerelle de laboratoire",cpu:12,ram:30,status:"OK"}
+  {name:"SRV-AD01",ip:"192.168.10.10",role:"AD DS / DNS",cpu:22,ram:48},
+  {name:"SRV-FICHIERS",ip:"192.168.10.20",role:"Partages réseau",cpu:35,ram:61},
+  {name:"DEBIAN-DOCKER",ip:"192.168.10.30",role:"Conteneurs applicatifs",cpu:78,ram:84},
+  {name:"APP-TEST",ip:"192.168.10.40",role:"Application de test",cpu:0,ram:0}
  ];
- return heading("Supervision","Données fictives pour apprendre à interpréter des indicateurs.")+
- `<div class="grid two">${servers.map(s=>`<article class="card"><div style="display:flex;justify-content:space-between;gap:8px"><h3>${s.name}</h3><span class="pill ${s.status==="OK"?"good":"warn"}">${s.status}</span></div><p class="muted">${s.role}</p><p class="small">${s.ip}</p><div style="margin-top:15px"><div style="display:flex;justify-content:space-between"><span>CPU</span><strong>${s.cpu}%</strong></div><div class="progress"><span style="width:${s.cpu}%;background:${s.cpu>70?"var(--orange)":"var(--accent)"}"></span></div></div><div style="margin-top:12px"><div style="display:flex;justify-content:space-between"><span>RAM</span><strong>${s.ram}%</strong></div><div class="progress"><span style="width:${s.ram}%;background:${s.ram>80?"var(--red)":"var(--green)"}"></span></div></div></article>`).join("")}</div>
- <div class="card" style="margin-top:16px"><h3>🧭 Exercice de diagnostic</h3><p>DEBIAN-DOCKER affiche une utilisation CPU et RAM plus élevée. Avant toute action, quelles vérifications ferais-tu ?</p><details><summary>Afficher une piste de diagnostic</summary><ul><li>Identifier les services et conteneurs actifs.</li><li>Examiner les métriques sur une période plutôt qu'un seul instant.</li><li>Consulter les journaux et rechercher une évolution inhabituelle.</li><li>Vérifier la capacité mémoire et l'impact sur les services.</li><li>Documenter les observations avant de modifier quoi que ce soit.</li></ul></details><p class="small">Ces métriques ne proviennent d'aucun serveur réel.</p></div>`;
+ return head("Supervision IT","Métriques fictives pour s'entraîner à l'analyse des alertes.")+
+ `<div class="grid two">${servers.map(s=>{
+  const down=simulatedDown.has(s.name),warn=!down&&(s.cpu>70||s.ram>80);
+  return `<article class="card"><div class="row-between"><h3>${s.name}</h3><span class="pill ${down?"warn":warn?"warn":"good"}">${down?"INDISPONIBLE":warn?"ALERTE":"OK"}</span></div><p class="muted">${s.role}</p><p class="small">${s.ip}</p><div style="margin-top:13px"><div class="row-between"><span>CPU</span><strong>${s.cpu}%</strong></div><div class="progress"><span style="width:${s.cpu}%;background:${s.cpu>70?"var(--orange)":"var(--accent)"}"></span></div></div><div style="margin-top:12px"><div class="row-between"><span>Mémoire</span><strong>${s.ram}%</strong></div><div class="progress"><span style="width:${s.ram}%;background:${s.ram>80?"var(--red)":"var(--green)"}"></span></div></div><div class="actions"><button class="btn" data-toggle-server="${s.name}">${down?"Simuler le retour":"Simuler une panne"}</button></div></article>`;
+ }).join("")}</div><p class="small" style="margin-top:14px">Cette simulation ne vérifie aucun serveur réel. Les états sont fictifs et peuvent être modifiés pour les exercices.</p>`;
+}
+const troubles=[
+ {id:"dns",title:"Un nom de domaine ne se résout plus",symptom:"Le poste accède à certains services par IP mais pas par nom.",checks:["Vérifier l'adresse et le serveur DNS configuré.","Tester la passerelle et la connectivité réseau.","Tester une résolution avec nslookup.","Vérifier les enregistrements et les journaux DNS."],answer:"Comparer les résultats de résolution, confirmer le serveur DNS interrogé puis vérifier les enregistrements et les journaux. Ne pas modifier la production sans confirmer la cause."},
+ {id:"dhcp",title:"Le poste ne reçoit pas d'adresse attendue",symptom:"Le client possède une configuration absente ou incorrecte.",checks:["Vérifier le lien réseau et le VLAN.","Examiner l'adresse, le masque et la passerelle reçus.","Contrôler l'étendue DHCP et les baux.","Vérifier relais DHCP et journaux si nécessaire."],answer:"Vérifier d'abord le lien et le VLAN, puis le périmètre DHCP, les baux disponibles et un éventuel relais. Documenter le résultat des tests."},
+ {id:"service",title:"Un service Linux ne démarre pas",symptom:"Le service est arrêté après un redémarrage.",checks:["Consulter systemctl status.","Examiner journalctl autour de l'heure du problème.","Vérifier la configuration et les permissions.","Contrôler l'espace disque et les dépendances."],answer:"Utiliser les journaux pour identifier l'erreur exacte, vérifier les dépendances et valider la configuration avant de redémarrer le service."},
+ {id:"disk",title:"Un serveur manque d'espace disque",symptom:"Une alerte indique une occupation élevée du stockage.",checks:["Confirmer la mesure et le point de montage concerné.","Identifier les répertoires volumineux avec les outils adaptés.","Vérifier journaux, sauvegardes et fichiers temporaires.","Prévoir une action sûre et une validation."],answer:"Confirmer le volume concerné et identifier les données responsables. Ne pas supprimer aveuglément des journaux ou des sauvegardes : définir une action validée et réversible."}
+];
+function troubleshootingPage(){
+ if(activeTrouble){
+  const t=troubles.find(x=>x.id===activeTrouble);if(!t)return "";
+  const checks=state.missionChecks["trouble:"+t.id]||[];
+  return head(t.title,t.symptom,'<button class="btn" data-back-troubles>← Scénarios</button>')+
+  `<div class="card"><h3>Checklist de diagnostic</h3><p class="muted">Coche les contrôles que tu as examinés dans ton raisonnement ou ton laboratoire.</p>${t.checks.map((x,i)=>`<label class="check-row"><input type="checkbox" data-trouble-check="${t.id}:${i}" ${checks.includes(i)?"checked":""}><span>${x}</span></label>`).join("")}<div class="actions"><button class="btn primary" data-trouble-answer="${t.id}">Afficher la synthèse</button></div><div id="troubleAnswer"></div></div>`;
+ }
+ return head("Atelier de dépannage","Choisis un incident fictif, effectue les vérifications puis consulte la synthèse.")+
+ `<div class="grid two">${troubles.map(t=>`<article class="card"><span class="pill">Scénario guidé</span><h3 style="margin-top:10px">${t.title}</h3><p class="muted">${t.symptom}</p><button class="btn primary" data-trouble="${t.id}">Commencer le diagnostic</button></article>`).join("")}</div>`;
 }
 function glossaryPage(){
- return heading("Glossaire IT","Recherche des définitions utiles en réseau, systèmes et cybersécurité.")+
- `<div class="card"><div class="field"><label for="glossarySearch">Rechercher un terme</label><input id="glossarySearch" placeholder="Ex. DHCP, VLAN, RPO..."></div><div id="glossaryList" class="grid two">${glossary.map(([term,def])=>`<article class="card glossary-entry" data-term="${esc((term+" "+def).toLowerCase())}"><h3>${term}</h3><p class="muted">${def}</p></article>`).join("")}</div></div>`;
+ return head("Glossaire IT","Recherche des définitions techniques utiles en BTS SIO SISR.")+
+ `<div class="card"><div class="field"><label for="glossSearch">Filtrer les termes</label><input id="glossSearch" placeholder="DNS, VLAN, sauvegarde..."></div><div class="grid two" id="glossResults">${glossary.map(([term,def])=>`<article class="card gloss-item" data-search="${escapeHTML((term+" "+def).toLowerCase())}"><h3>${term}</h3><p class="muted">${def}</p></article>`).join("")}</div></div>`;
 }
 function journalPage(){
- return heading("Carnet de bord","Note tes observations, tes difficultés et les solutions trouvées.")+
- `<div class="grid two"><div class="card"><h3>Nouvelle note</h3><form id="noteForm"><div class="field"><label for="noteTitle">Titre</label><input id="noteTitle" maxlength="100" required placeholder="Ex. Problème de résolution DNS"></div><div class="field"><label for="noteText">Contenu</label><textarea id="noteText" maxlength="5000" required placeholder="Contexte, diagnostic, solution, résultat..."></textarea></div><button class="btn primary">Enregistrer la note</button></form></div><div class="card"><h3>Conseil de documentation</h3><p class="muted">Une bonne note précise le contexte, les symptômes, les vérifications effectuées, la cause identifiée et la solution validée.</p><p class="small">Les notes sont stockées uniquement dans ce navigateur. N'y inscris pas de mots de passe ni de données confidentielles.</p></div></div>
- <h2 class="section-title">Mes notes (${state.notes.length})</h2><div class="grid two">${state.notes.slice().reverse().map(n=>`<article class="card"><span class="small">${esc(n.date)}</span><h3 style="margin-top:7px">${esc(n.title)}</h3><p style="white-space:pre-wrap;overflow-wrap:anywhere">${esc(n.text)}</p><div class="actions"><button class="btn danger" data-delete-note="${n.id}">Supprimer</button></div></article>`).join("")||'<div class="card empty">Ton carnet est vide pour le moment.</div>'}</div>`;
+ return head("Carnet de bord","Garde une trace de tes exercices, diagnostics et apprentissages.")+
+ `<div class="grid two"><div class="card"><h3>Nouvelle entrée</h3><form id="noteForm"><div class="field"><label for="noteTitle">Titre</label><input id="noteTitle" maxlength="100" required placeholder="Ex. Diagnostic DHCP"></div><div class="field"><label for="noteText">Notes</label><textarea id="noteText" maxlength="5000" required placeholder="Contexte, tests, résultat, solution..."></textarea></div><button class="btn primary">Enregistrer</button></form></div><div class="card"><h3>Conseils de documentation</h3><ul><li>Décrire le symptôme et l'impact.</li><li>Noter les vérifications réalisées.</li><li>Préciser la cause si elle est confirmée.</li><li>Documenter la solution et le résultat.</li></ul><p class="small">Ne stocke aucun mot de passe ni aucune donnée confidentielle dans le carnet.</p></div></div>
+ <h2 class="section">Historique des notes (${state.notes.length})</h2><div class="grid two">${state.notes.slice().reverse().map(n=>`<article class="card"><span class="small">${escapeHTML(n.date)}</span><h3 style="margin-top:7px">${escapeHTML(n.title)}</h3><p style="white-space:pre-wrap;overflow-wrap:anywhere">${escapeHTML(n.text)}</p><button class="btn danger" data-delete-note="${n.id}">Supprimer</button></article>`).join("")||'<div class="card empty">Aucune note enregistrée.</div>'}</div>`;
 }
 function settingsPage(){
- return heading("Paramètres et données","Gère l'apparence et tes données locales.")+
- `<div class="grid two"><div class="card"><h3>🎨 Apparence</h3><p class="muted">Choisis le thème de l'interface.</p><div class="actions"><button class="btn" data-theme="dark">Thème sombre</button><button class="btn" data-theme="light">Thème clair</button></div></div>
- <div class="card"><h3>📦 Exporter les données</h3><p class="muted">Télécharge une sauvegarde JSON de ta progression, tes notes et tes résultats de quiz.</p><button class="btn primary" id="exportData">Exporter mes données</button></div>
- <div class="card"><h3>↩️ Importer une sauvegarde</h3><p class="muted">Importer un fichier JSON exporté par CyberLab Academy.</p><div class="field"><input id="importFile" type="file" accept=".json,application/json" aria-label="Fichier de sauvegarde JSON"></div><button class="btn" id="importData">Importer la sauvegarde</button></div>
- <div class="card"><h3>🧹 Réinitialisation</h3><p class="muted">Efface la progression et les notes enregistrées sur ce navigateur.</p><button class="btn danger" id="resetData">Réinitialiser mes données</button></div></div>
- <div class="card" style="margin-top:16px"><h3>Confidentialité</h3><p class="muted">Cette application est conçue pour fonctionner côté navigateur. Elle ne nécessite ni compte, ni serveur applicatif, ni base de données. Le stockage local n'est pas synchronisé automatiquement entre appareils.</p></div>`;
+ return head("Paramètres","Apparence, sauvegardes et gestion de tes données.")+
+ `<div class="grid two"><div class="card"><h3>🎨 Apparence</h3><p class="muted">Choisis le thème de l'interface.</p><div class="actions"><button class="btn" data-set-theme="dark">Sombre</button><button class="btn" data-set-theme="light">Clair</button></div></div><div class="card"><h3>📦 Exporter</h3><p class="muted">Télécharger progression, quiz et notes dans un fichier JSON.</p><button class="btn primary" data-export>Exporter les données</button></div><div class="card"><h3>↩️ Importer</h3><p class="muted">Restaurer un fichier exporté par cette application.</p><div class="field"><input type="file" id="importFile" accept=".json,application/json" aria-label="Sauvegarde JSON"></div><button class="btn" data-import>Importer</button></div><div class="card"><h3>🧹 Réinitialiser</h3><p class="muted">Effacer la progression enregistrée sur ce navigateur.</p><button class="btn danger" data-reset>Réinitialiser mes données</button></div></div><div class="card" style="margin-top:15px"><h3>Stockage et confidentialité</h3><p class="muted">Les données restent dans le stockage local du navigateur. Elles ne sont pas synchronisées automatiquement entre appareils. Le code de cette application n'envoie pas de données à un serveur applicatif.</p></div>`;
 }
 function render(){
- updateProgress();
- const titles={dashboard:"Tableau de bord",courses:"Formations",missions:"Missions pratiques",quiz:"Quiz et révisions",network:"Calculateur réseau",terminal:"Terminal simulé",monitoring:"Supervision",glossary:"Glossaire IT",journal:"Carnet de bord",settings:"Paramètres"};
- $("#pageTitle").textContent=titles[currentPage]||"CyberLab Academy";
- const pages={dashboard,courses: coursesPage,missions:missionsPage,quiz:quizPage,network:networkPage,terminal:terminalPage,monitoring:monitoringPage,glossary:glossaryPage,journal:journalPage,settings:settingsPage};
- $("#pageContent").innerHTML=(pages[currentPage]||dashboard)();
+ updateStats();
+ const names={dashboard:"Tableau de bord",courses:"Formations",missions:"Missions pratiques",quiz:"Quiz et examens blancs",network:"Calculateur IP",terminal:"Terminal simulé",monitoring:"Supervision",troubleshooting:"Atelier de dépannage",glossary:"Glossaire",journal:"Carnet de bord",settings:"Paramètres"};
+ $("#pageTitle").textContent=names[page]||"CyberLab Academy";
+ $$("#navigation [data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));
+ let html="";
+ switch(page){
+  case "dashboard":html=dashboard();break;
+  case "courses":html=activeCourse?courseDetail(activeCourse):coursesPage();break;
+  case "missions":html=missionsPage();break;
+  case "quiz":html=quizPage();break;
+  case "network":html=networkPage();break;
+  case "terminal":html=terminalPage();break;
+  case "monitoring":html=monitoringPage();break;
+  case "troubleshooting":html=troubleshootingPage();break;
+  case "glossary":html=glossaryPage();break;
+  case "journal":html=journalPage();break;
+  case "settings":html=settingsPage();break;
+  default:html=dashboard();
+ }
+ $("#content").innerHTML=html;
+}
+function go(p){
+ page=p;
+ if(p!=="courses")activeCourse=null;
+ if(p!=="troubleshooting")activeTrouble=null;
+ $("#sidebar").classList.remove("open");render();
 }
 function startQuiz(){
- quizRun=[...questions].sort(()=>Math.random()-.5).slice(0,10);
+ quiz=[...questions].sort(()=>Math.random()-.5).slice(0,10);
  render();
 }
-function correctQuiz(form){
- if(!quizRun)return;
- const fd=new FormData(form);let correct=0;
- const review=quizRun.map((q,i)=>{
-  const val=fd.get("q"+i);const ok=Number(val)===q.correct;if(ok)correct++;
-  return `<div class="question"><strong>${i+1}. ${q.q}</strong><p>${ok?"✅ Bonne réponse":"❌ Bonne réponse : "+esc(q.a[q.correct])}</p><p class="muted">${q.why}</p></div>`;
+function submitQuiz(form){
+ if(!quiz)return;
+ const fd=new FormData(form);
+ let correct=0;
+ const review=quiz.map((q,i)=>{
+  const ok=Number(fd.get("q"+i))===q.c;if(ok)correct++;
+  return `<div class="question"><strong>${i+1}. ${q.q}</strong><p>${ok?"✅ Bonne réponse":"❌ Réponse attendue : "+q.a[q.c]}</p><p class="muted">${q.e}</p></div>`;
  }).join("");
- const score=Math.round(correct/quizRun.length*100);
+ const score=Math.round(correct/quiz.length*100),xp=correct*10;
  state.quizBest=Math.max(state.quizBest,score);
- state.quizHistory.push({date:new Date().toLocaleDateString("fr-FR"),score,correct,total:quizRun.length});
- if(state.quizHistory.length>50)state.quizHistory=state.quizHistory.slice(-50);
- const xp=correct*10;state.xp+=xp;saveState();updateProgress();quizRun=null;
- $("#pageContent").innerHTML=heading("Résultat du quiz","Voici ta correction détaillée.")+
- `<div class="card"><div class="stat-value">${score}%</div><p>${correct}/${questions.length} réponses correctes · +${xp} XP</p><div class="actions"><button class="btn primary" id="startQuiz">Recommencer</button><button class="btn" data-go="quiz">Retour aux quiz</button></div></div><div class="card" style="margin-top:16px">${review}</div>`;
- toast(`Quiz terminé : ${score}% · +${xp} XP`);
-}
-function handleClick(e){
- const b=e.target.closest("button");if(!b)return;
- if(b.dataset.go){go(b.dataset.go);return}
- if(b.dataset.course){go("courses");$("#pageContent").innerHTML=coursePage(b.dataset.course);return}
- if(b.dataset.lesson){
-  if(!state.completedLessons.includes(b.dataset.lesson)){
-   state.completedLessons.push(b.dataset.lesson);state.xp+=25;saveState();updateProgress();
-   const id=b.dataset.lesson.split("-")[0];$("#pageContent").innerHTML=coursePage(id);
-   toast("Leçon terminée · +25 XP");
-  }return;
- }
- if(b.dataset.mission){
-  const m=missions.find(x=>x.id===b.dataset.mission);
-  if(m&&!state.completedMissions.includes(m.id)){
-   state.completedMissions.push(m.id);state.xp+=m.xp;saveState();render();
-   toast("Mission validée · +"+m.xp+" XP");
-  }return;
- }
- if(b.dataset.command){runCommand(b.dataset.command);return}
- if(b.dataset.theme){state.theme=b.dataset.theme;saveState();applyTheme();toast("Thème mis à jour");return}
- if(b.dataset.deleteNote){
-  state.notes=state.notes.filter(n=>String(n.id)!==b.dataset.deleteNote);saveState();render();toast("Note supprimée");return;
- }
- if(b.id==="startQuiz"){startQuiz();return}
- if(b.id==="cancelQuiz"){quizRun=null;render();return}
- if(b.id==="exportData"){exportData();return}
- if(b.id==="importData"){importData();return}
- if(b.id==="resetData"){
-  if(confirm("Effacer toute ta progression et tes notes sur ce navigateur ?")){
-   state={...defaultState};saveState();applyTheme();go("dashboard");toast("Données réinitialisées");
-  }return;
- }
- if(b.id==="menuButton")$("#sidebar").classList.toggle("open");
+ state.quizHistory.push({date:new Date().toLocaleString("fr-FR"),score,correct,total:quiz.length});
+ state.quizHistory=state.quizHistory.slice(-50);state.xp+=xp;save();updateStats();quiz=null;
+ $("#content").innerHTML=head("Résultat du quiz","Correction détaillée de tes réponses.")+
+ `<div class="card"><div class="stat-number">${score}%</div><p>${correct}/10 réponses correctes · +${xp} XP</p><div class="actions"><button class="btn primary" data-start-quiz>Recommencer</button><button class="btn" data-go="quiz">Historique des quiz</button></div></div><div class="card" style="margin-top:15px">${review}</div>`;
+ notify(`Quiz terminé : ${score}% · +${xp} XP`);
 }
 function exportData(){
- const blob=new Blob([JSON.stringify({app:"CyberLab Academy",version:6,exportedAt:new Date().toISOString(),state},null,2)],{type:"application/json"});
- const url=URL.createObjectURL(blob);const a=document.createElement("a");
- a.href=url;a.download="cyberlab-academy-backup.json";a.click();URL.revokeObjectURL(url);
- toast("Export demandé");
+ const data={app:"CyberLab Academy",version:7,exportedAt:new Date().toISOString(),state};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="cyberlab-academy-v7.json";a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);notify("Export JSON généré.");
 }
 function importData(){
- const file=$("#importFile").files[0];
- if(!file){toast("Choisis d'abord un fichier JSON.");return}
- if(file.size>2*1024*1024){toast("Fichier trop volumineux (maximum 2 Mo).");return}
+ const file=$("#importFile")?.files?.[0];
+ if(!file){notify("Choisis un fichier JSON.");return}
+ if(file.size>2*1024*1024){notify("Fichier trop volumineux (2 Mo maximum).");return}
  const reader=new FileReader();
  reader.onload=()=>{
   try{
-   const obj=JSON.parse(reader.result);
-   const incoming=obj.state;
-   if(!incoming||!Array.isArray(incoming.completedLessons)||!Array.isArray(incoming.completedMissions)||!Array.isArray(incoming.notes)||!Array.isArray(incoming.quizHistory)||!Number.isFinite(incoming.xp)||incoming.xp<0)throw Error("Format invalide");
+   const parsed=JSON.parse(reader.result),s=parsed.state;
+   if(!s||!Number.isFinite(s.xp)||s.xp<0||!Array.isArray(s.lessons)||!Array.isArray(s.missions)||!Array.isArray(s.notes)||!Array.isArray(s.quizHistory))throw Error();
    if(!confirm("Remplacer les données actuelles par cette sauvegarde ?"))return;
-   state={...defaultState,...incoming};
+   state={...initialState,...s};
    state.xp=Math.floor(state.xp);
-   state.completedLessons=state.completedLessons.filter(x=>typeof x==="string");
-   state.completedMissions=state.completedMissions.filter(x=>typeof x==="string");
+   state.lessons=state.lessons.filter(x=>typeof x==="string");
+   state.missions=state.missions.filter(x=>typeof x==="string");
    state.notes=state.notes.filter(n=>n&&typeof n.title==="string"&&typeof n.text==="string").slice(-200);
    state.quizHistory=state.quizHistory.filter(x=>x&&Number.isFinite(x.score)).slice(-50);
-   saveState();applyTheme();go("dashboard");toast("Sauvegarde importée");
-  }catch{toast("Fichier invalide ou incompatible.");}
+   save();applyTheme();go("dashboard");notify("Sauvegarde importée.");
+  }catch{notify("Fichier invalide ou incompatible.");}
  };
  reader.readAsText(file);
 }
 function applyTheme(){
  document.body.classList.toggle("light",state.theme==="light");
- $("#themeButton").textContent=state.theme==="light"?"☾ Mode sombre":"☀ Mode clair";
+ $("#themeButton").textContent=state.theme==="light"?"☾":"☀";
 }
 $("#navigation").addEventListener("click",e=>{
- const b=e.target.closest("button[data-page]");if(b)go(b.dataset.page);
+ const b=e.target.closest("[data-page]");if(b)go(b.dataset.page);
 });
-document.addEventListener("click",handleClick);
+$("#menuButton").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
 $("#themeButton").addEventListener("click",()=>{
- state.theme=state.theme==="light"?"dark":"light";saveState();applyTheme();
+ state.theme=state.theme==="light"?"dark":"light";save();applyTheme();
 });
-$("#pageContent").addEventListener("submit",e=>{
+$("#globalSearch").addEventListener("keydown",e=>{
+ if(e.key!=="Enter")return;
+ const q=e.target.value.trim().toLowerCase();if(!q)return;
+ const found=courses.find(c=>(c.name+" "+c.desc+" "+c.lessons.flat().join(" ")).toLowerCase().includes(q));
+ if(found){activeCourse=found.id;page="courses";render();return}
+ const m=missions.find(x=>(x.title+" "+x.desc+" "+x.cat).toLowerCase().includes(q));
+ if(m){go("missions");notify("Mission correspondante : "+m.title);return}
+ const g=glossary.find(x=>(x[0]+" "+x[1]).toLowerCase().includes(q));
+ if(g){go("glossary");$("#glossSearch").value=q;$("#glossSearch").dispatchEvent(new Event("input"));return}
+ notify("Aucun résultat trouvé dans les cours, missions ou le glossaire.");
+});
+$("#content").addEventListener("click",e=>{
+ const b=e.target.closest("button");if(!b)return;
+ if(b.dataset.go){go(b.dataset.go);return}
+ if(b.dataset.course){activeCourse=b.dataset.course;page="courses";render();return}
+ if(b.dataset.lesson){
+  if(!state.lessons.includes(b.dataset.lesson)){
+   state.lessons.push(b.dataset.lesson);state.xp+=25;save();render();notify("Leçon validée · +25 XP");
+  }return;
+ }
+ if(b.dataset.finishMission){
+  const m=missions.find(x=>x.id===b.dataset.finishMission);
+  const checks=state.missionChecks[m.id]||[];
+  if(checks.length<m.steps.length){notify("Coche toutes les étapes avant de valider.");return}
+  if(!state.missions.includes(m.id)){state.missions.push(m.id);state.xp+=m.xp;save();render();notify("Mission validée · +"+m.xp+" XP");}
+  return;
+ }
+ if(b.dataset.startQuiz!==undefined){startQuiz();return}
+ if(b.hasAttribute("data-cancel-quiz")){quiz=null;render();return}
+ if(b.dataset.cmd!==undefined){runCommand(b.dataset.cmd);return}
+ if(b.dataset.toggleServer){
+  const n=b.dataset.toggleServer;
+  if(simulatedDown.has(n))simulatedDown.delete(n);else simulatedDown.add(n);
+  render();return;
+ }
+ if(b.dataset.trouble){
+  activeTrouble=b.dataset.trouble;
+  state.missionChecks["trouble:"+activeTrouble]=[];
+  go("troubleshooting");activeTrouble=b.dataset.trouble;render();return;
+ }
+ if(b.hasAttribute("data-back-troubles")){activeTrouble=null;render();return}
+ if(b.dataset.troubleAnswer){
+  const t=troubles.find(x=>x.id===b.dataset.troubleAnswer);
+  $("#troubleAnswer").innerHTML=`<div class="card" style="margin-top:15px"><h3>Synthèse pédagogique</h3><p>${t.answer}</p><p class="small">Cette synthèse est un point de départ. En situation réelle, confirme toujours la cause avant d'appliquer une correction.</p></div>`;
+  return;
+ }
+ if(b.dataset.setTheme){
+  state.theme=b.dataset.setTheme;save();applyTheme();notify("Thème modifié.");return;
+ }
+ if(b.hasAttribute("data-export")){exportData();return}
+ if(b.hasAttribute("data-import")){importData();return}
+ if(b.hasAttribute("data-reset")){
+  if(confirm("Effacer la progression, les notes et l'historique de quiz ?")){
+   state={...initialState};save();applyTheme();page="dashboard";activeCourse=null;quiz=null;render();notify("Données réinitialisées.");
+  }return;
+ }
+ if(b.dataset.deleteNote){
+  state.notes=state.notes.filter(n=>String(n.id)!==b.dataset.deleteNote);save();render();notify("Note supprimée.");
+ }
+});
+$("#content").addEventListener("change",e=>{
+ const el=e.target;
+ if(el.dataset.check){
+  const [id,index]=el.dataset.check.split(":");const i=Number(index);
+  const set=new Set(state.missionChecks[id]||[]);
+  if(el.checked)set.add(i);else set.delete(i);
+  state.missionChecks[id]=[...set];save();render();return;
+ }
+ if(el.dataset.troubleCheck){
+  const [id,index]=el.dataset.troubleCheck.split(":");const key="trouble:"+id,i=Number(index);
+  const set=new Set(state.missionChecks[key]||[]);
+  if(el.checked)set.add(i);else set.delete(i);
+  state.missionChecks[key]=[...set];save();render();return;
+ }
+});
+$("#content").addEventListener("submit",e=>{
  e.preventDefault();
- if(e.target.id==="networkForm"){
-  const result=calculateNetwork($("#ipInput").value.trim(),$("#cidrInput").value);
-  $("#networkResult").innerHTML=networkResult(result);
+ if(e.target.id==="ipForm"){
+  $("#ipResult").innerHTML=showIP(calculate($("#ip").value.trim(),$("#prefix").value));return;
  }
- if(e.target.id==="terminalForm"){
-  runCommand($("#terminalInput").value);$("#terminalInput").value="";
+ if(e.target.id==="termForm"){
+  runCommand($("#termInput").value);$("#termInput").value="";return;
  }
- if(e.target.id==="quizForm")correctQuiz(e.target);
+ if(e.target.id==="quizForm"){submitQuiz(e.target);return}
  if(e.target.id==="noteForm"){
   const title=$("#noteTitle").value.trim(),text=$("#noteText").value.trim();
   if(!title||!text)return;
   state.notes.push({id:Date.now(),title,text,date:new Date().toLocaleString("fr-FR")});
-  if(state.notes.length>200)state.notes=state.notes.slice(-200);
-  saveState();render();toast("Note enregistrée");
+  state.notes=state.notes.slice(-200);save();render();notify("Note enregistrée.");return;
  }
 });
-$("#pageContent").addEventListener("input",e=>{
- if(e.target.id==="glossarySearch"){
+$("#content").addEventListener("input",e=>{
+ if(e.target.id==="glossSearch"){
   const q=e.target.value.toLowerCase().trim();
-  $$(".glossary-entry").forEach(el=>el.style.display=el.dataset.term.includes(q)?"":"none");
+  $$(".gloss-item").forEach(el=>el.style.display=el.dataset.search.includes(q)?"":"none");
  }
 });
-$("#menuButton").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
 function init(){
  if(!["light","dark"].includes(state.theme))state.theme="dark";
  applyTheme();render();
