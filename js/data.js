@@ -4,205 +4,140 @@
 window.CyberData = {
   courses: [
     {
-      id: "windows",
-      title: "Windows Server",
-      icon: "🪟",
+      id: "windows-server",
+      icon: "🖥️",
       level: "Débutant",
-      description: "Active Directory, DNS, DHCP, GPO et partages.",
+      title: "Windows Server et Active Directory",
+      description: "Administrer un domaine, les comptes, les groupes et les stratégies de sécurité.",
       lessons: [
         {
-          title: "Active Directory",
-          content: "AD DS centralise les utilisateurs, groupes, ordinateurs et ressources d'un domaine Windows.\n\nÀ retenir : domaine, contrôleur de domaine, unité d'organisation et groupe de sécurité.",
-          task: "Explique pourquoi une entreprise peut organiser ses comptes dans des unités d'organisation distinctes."
+          title: "Comprendre Active Directory",
+          content: "Active Directory centralise les identités, les ordinateurs et les ressources d'un domaine. Les unités d'organisation permettent de structurer les objets et de déléguer certaines tâches.",
+          task: "Propose une arborescence avec les OU Utilisateurs, Techniciens et Ordinateurs."
         },
         {
-          title: "Utilisateurs et groupes",
-          content: "Les utilisateurs représentent les identités. Les groupes facilitent l'attribution des permissions.\n\nPrivilégie l'attribution des droits à des groupes plutôt qu'à une longue liste de comptes individuels.",
-          task: "Propose une organisation de groupes pour les équipes Clients et Techniciens."
+          title: "Comptes et groupes",
+          content: "Les groupes de sécurité simplifient l'attribution des droits. Il faut appliquer le principe du moindre privilège et éviter les comptes administrateurs utilisés au quotidien.",
+          task: "Imagine un groupe permettant à une équipe d'accéder à un dossier partagé sans donner de droits administrateur."
         },
         {
-          title: "DNS et DHCP",
-          content: "DNS résout les noms. DHCP distribue les paramètres IP aux clients : adresse, masque, passerelle et souvent DNS.",
-          task: "Décris trois vérifications à effectuer lorsqu'un poste ne résout plus les noms."
-        },
-        {
-          title: "GPO et permissions",
-          content: "Les stratégies de groupe appliquent des configurations. Les permissions NTFS et les droits de partage déterminent les accès aux fichiers.",
-          task: "Explique pourquoi il faut tester les droits avec un compte standard."
+          title: "GPO et durcissement",
+          content: "Les stratégies de groupe permettent de gérer des paramètres de sécurité, des règles de mot de passe et des restrictions sur les postes du domaine.",
+          task: "Cite trois paramètres qu'une GPO de sécurité pourrait appliquer."
         }
       ]
     },
     {
-      id: "linux",
-      title: "Debian et Linux",
+      id: "debian",
       icon: "🐧",
       level: "Débutant",
-      description: "Commandes, permissions, services et journaux.",
+      title: "Administration Debian",
+      description: "Utilisateurs, services, mises à jour, journaux et permissions Linux.",
       lessons: [
         {
-          title: "Commandes essentielles",
-          content: "pwd affiche le répertoire courant, ls liste les fichiers et cd change de répertoire.\n\nip addr affiche les interfaces réseau. ip route affiche les routes connues.",
-          task: "Explique la différence entre ip addr et ip route."
+          title: "Comptes et permissions",
+          content: "Linux utilise des utilisateurs, des groupes et des permissions de lecture, écriture et exécution. Les droits doivent être adaptés au besoin réel.",
+          task: "Explique pourquoi un dossier contenant des sauvegardes ne doit pas être accessible en écriture à tous."
         },
         {
-          title: "Utilisateurs et permissions",
-          content: "Les permissions Linux distinguent le propriétaire, le groupe et les autres utilisateurs. Les comptes privilégiés doivent être limités.",
-          task: "Pourquoi éviter de travailler systématiquement avec le compte root ?"
-        },
-        {
-          title: "Services systemd",
-          content: "systemctl permet d'inspecter et de gérer les services systemd. journalctl aide à consulter les journaux associés.",
-          task: "Établis une liste de vérifications pour un service qui ne démarre plus."
-        },
-        {
-          title: "Mises à jour et maintenance",
-          content: "Une maintenance comprend l'analyse des mises à jour, la sauvegarde, la planification, les tests et la vérification après intervention.",
-          task: "Décris les précautions à prendre avant une mise à jour d'un serveur."
+          title: "Services et journaux",
+          content: "Les services sont gérés par systemd sur les systèmes courants. Les journaux aident à comprendre les démarrages, les erreurs et les événements système.",
+          task: "Explique ce que tu vérifierais si un service ne démarre plus."
         }
       ]
     },
     {
-      id: "network",
-      title: "Réseaux TCP/IP",
+      id: "networking",
       icon: "🌐",
       level: "Débutant",
-      description: "IPv4, CIDR, VLAN, routage, DNS et DHCP.",
+      title: "Réseaux TCP/IP",
+      description: "Adressage IPv4, masques, passerelles, DNS, DHCP et segmentation.",
       lessons: [
         {
           title: "Adressage IPv4",
-          content: "Une adresse IPv4 contient 32 bits. Le préfixe CIDR indique combien de bits identifient le réseau.",
-          task: "Pour 192.168.10.25/24, indique l'adresse réseau et le masque."
+          content: "Une adresse IPv4 identifie une interface sur un réseau. Le masque ou le préfixe CIDR définit la partie réseau et la partie hôte.",
+          task: "Pour 192.168.10.25/24, indique le réseau et la passerelle possible."
         },
         {
-          title: "Sous-réseaux",
-          content: "Le masque sépare la partie réseau de la partie hôte. La taille d'un sous-réseau dépend de son préfixe.",
-          task: "Explique pourquoi un réseau /26 possède moins d'adresses qu'un /24."
-        },
-        {
-          title: "VLAN et commutation",
-          content: "Un VLAN sépare logiquement des domaines de niveau 2. La communication entre VLAN nécessite un mécanisme de routage.",
-          task: "Propose deux VLAN pour séparer les postes clients des techniciens."
-        },
-        {
-          title: "Routage et diagnostic",
-          content: "Un routeur achemine les paquets entre réseaux. Une passerelle par défaut sert aux destinations qui ne correspondent pas aux routes plus spécifiques.",
-          task: "Cite les vérifications utiles lorsqu'un poste ne joint pas un autre réseau."
+          title: "DNS et DHCP",
+          content: "DNS associe des noms à des informations telles que des adresses IP. DHCP fournit automatiquement des paramètres réseau aux clients.",
+          task: "Un poste reçoit une adresse 169.254.x.x. Quelles vérifications effectues-tu ?"
         }
       ]
     },
     {
-      id: "security",
-      title: "Cybersécurité défensive",
+      id: "firewall",
+      icon: "🧱",
+      level: "Intermédiaire",
+      title: "Pare-feu et segmentation",
+      description: "Filtrage, VLAN, règles entrantes et sortantes et accès d'administration.",
+      lessons: [
+        {
+          title: "Règles de filtrage",
+          content: "Une règle de pare-feu doit définir une source, une destination, un protocole, un port et une action. Une politique restrictive réduit les communications inutiles.",
+          task: "Propose une règle autorisant uniquement un poste d'administration à accéder à l'interface de gestion d'un serveur."
+        },
+        {
+          title: "Segmentation réseau",
+          content: "Séparer les postes utilisateurs, les serveurs et l'administration limite la propagation d'un incident et facilite le contrôle des flux.",
+          task: "Explique pourquoi les postes utilisateurs ne devraient pas tous administrer directement les serveurs."
+        }
+      ]
+    },
+    {
+      id: "backup",
+      icon: "💾",
+      level: "Intermédiaire",
+      title: "Sauvegarde et restauration",
+      description: "Stratégie de sauvegarde, rétention, copie hors ligne et tests de restauration.",
+      lessons: [
+        {
+          title: "Concevoir une sauvegarde",
+          content: "Une sauvegarde doit être protégée contre les accès non autorisés et les suppressions. Une stratégie doit prévoir plusieurs copies, des supports distincts et des tests de restauration.",
+          task: "Propose une stratégie pour protéger les fichiers importants d'une PME contre une panne et un rançongiciel."
+        },
+        {
+          title: "Tester la restauration",
+          content: "Une sauvegarde n'est utile que si les données peuvent être restaurées dans un délai acceptable. Les tests doivent être documentés et réalisés dans un environnement adapté.",
+          task: "Liste les contrôles à effectuer après une restauration de fichiers."
+        }
+      ]
+    },
+    {
+      id: "cybersecurity",
       icon: "🛡️",
       level: "Intermédiaire",
-      description: "Durcissement, droits, pare-feu et réponse aux incidents.",
+      title: "Cybersécurité défensive",
+      description: "Confidentialité, intégrité, disponibilité, incidents et mesures de protection.",
       lessons: [
         {
-          title: "Moindre privilège",
-          content: "Chaque compte doit disposer uniquement des permissions nécessaires. Les comptes administratifs doivent être protégés et utilisés avec discernement.",
-          task: "Propose deux mesures pour réduire les privilèges excessifs."
+          title: "Principes fondamentaux",
+          content: "La confidentialité limite l'accès aux personnes autorisées, l'intégrité protège contre les modifications non légitimes et la disponibilité garantit l'accès aux services nécessaires.",
+          task: "Associe une mesure de protection à chacun de ces trois objectifs."
         },
         {
-          title: "Pare-feu et filtrage",
-          content: "Un pare-feu applique des règles sur les flux réseau. Il faut comprendre les sources, destinations, ports, protocoles et besoins métier.",
-          task: "Pourquoi une règle qui autorise tous les flux est-elle difficile à sécuriser ?"
-        },
-        {
-          title: "Journaux et incidents",
-          content: "Les journaux aident à reconstituer une chronologie. Il faut préserver les informations utiles, documenter les actions et suivre les procédures de l'organisation.",
-          task: "Quels éléments noter lors de la découverte d'un incident ?"
-        },
-        {
-          title: "Sauvegardes et continuité",
-          content: "Une sauvegarde n'est utile que si elle est disponible et restaurable. La protection des copies et les tests de restauration font partie de la stratégie.",
-          task: "Explique pourquoi un test de restauration est indispensable."
-        }
-      ]
-    },
-    {
-      id: "virtualization",
-      title: "Virtualisation",
-      icon: "🖥️",
-      level: "Intermédiaire",
-      description: "Machines virtuelles, ressources, réseaux et sauvegardes.",
-      lessons: [
-        {
-          title: "Hyperviseurs et machines virtuelles",
-          content: "Un hyperviseur fournit des ressources virtuelles aux systèmes invités. Le dimensionnement doit tenir compte de la capacité de l'hôte.",
-          task: "Quels problèmes peuvent apparaître si toutes les VM consomment trop de mémoire ?"
-        },
-        {
-          title: "Réseaux virtuels",
-          content: "Les commutateurs virtuels relient les VM à d'autres VM, à l'hôte ou à un réseau physique selon leur configuration.",
-          task: "Dessine la circulation du trafic entre une VM cliente et un serveur."
-        },
-        {
-          title: "Stockage et sauvegardes",
-          content: "Un snapshot permet de revenir à un état précédent dans certaines conditions, mais il ne remplace pas une sauvegarde indépendante.",
-          task: "Propose une stratégie de sauvegarde pour deux VM importantes."
-        },
-        {
-          title: "Capacité et disponibilité",
-          content: "La supervision des ressources et la documentation des dépendances permettent d'anticiper les problèmes de capacité.",
-          task: "Cite les indicateurs à surveiller sur un hôte de virtualisation."
+          title: "Réponse à incident",
+          content: "Face à un incident, il faut alerter les responsables, préserver les éléments utiles, limiter les risques selon les procédures et documenter les actions. Les décisions doivent être adaptées à la situation.",
+          task: "Un poste présente un comportement inhabituel. Donne les premières actions prudentes à effectuer."
         }
       ]
     },
     {
       id: "docker",
-      title: "Docker et conteneurs",
       icon: "🐳",
       level: "Intermédiaire",
-      description: "Images, conteneurs, ports, volumes et diagnostic.",
+      title: "Docker et services",
+      description: "Conteneurs, images, volumes, ports et surveillance de services.",
       lessons: [
         {
           title: "Images et conteneurs",
-          content: "Une image sert de modèle pour créer un conteneur. Un conteneur exécute un processus isolé selon sa configuration.",
-          task: "Explique la différence entre une image et un conteneur."
+          content: "Une image sert de modèle à un conteneur. Un conteneur exécute une application isolée. Les volumes peuvent conserver des données au-delà du cycle de vie du conteneur.",
+          task: "Explique la différence entre une image, un conteneur et un volume."
         },
         {
-          title: "Ports et volumes",
-          content: "Les ports publiés rendent un service accessible depuis un autre réseau. Les volumes permettent de conserver des données au-delà du cycle de vie d'un conteneur.",
-          task: "Pourquoi faut-il prévoir un volume pour une application qui conserve des données ?"
-        },
-        {
-          title: "Journaux et état",
-          content: "L'état, les journaux, les ports et les montages permettent de diagnostiquer un conteneur indisponible.",
-          task: "Établis un ordre de vérification pour un service Docker qui ne répond plus."
-        },
-        {
-          title: "Maintenance des conteneurs",
-          content: "Les mises à jour nécessitent de vérifier la compatibilité, les données persistantes, les variables de configuration et la procédure de retour arrière.",
-          task: "Pourquoi sauvegarder les données avant de recréer un conteneur ?"
-        }
-      ]
-    },
-    {
-      id: "monitoring",
-      title: "Supervision IT",
-      icon: "📈",
-      level: "Intermédiaire",
-      description: "Disponibilité, métriques, alertes et compte rendu.",
-      lessons: [
-        {
-          title: "Indicateurs utiles",
-          content: "CPU, mémoire, espace disque, disponibilité et latence donnent des indications sur la santé d'un système.",
-          task: "Quels indicateurs surveiller sur un serveur de fichiers ?"
-        },
-        {
-          title: "Alertes et seuils",
-          content: "Des seuils adaptés et des durées de confirmation permettent de réduire les alertes inutiles.",
-          task: "Pourquoi une utilisation CPU élevée pendant quelques secondes n'indique-t-elle pas toujours une panne ?"
-        },
-        {
-          title: "Corrélation des événements",
-          content: "Comparer les métriques et journaux sur une même période aide à comprendre la chronologie d'un incident.",
-          task: "Explique comment rapprocher une alerte disque et les journaux d'un service."
-        },
-        {
-          title: "Rapport d'intervention",
-          content: "Un rapport indique le symptôme, l'impact, les contrôles réalisés, les constatations confirmées, la résolution et les actions de prévention.",
-          task: "Rédige un bref compte rendu pour une indisponibilité fictive."
+          title: "Exposition des ports",
+          content: "Un port publié peut rendre un service accessible depuis d'autres machines. Il faut limiter les ports exposés et protéger les interfaces d'administration.",
+          task: "Quels risques poses-tu si une interface d'administration est exposée sans restriction ?"
         }
       ]
     }
@@ -211,292 +146,526 @@ window.CyberData = {
   missions: [
     {
       id: "mission-ad",
-      title: "Créer un compte de domaine",
       category: "Windows Server",
       difficulty: "Débutant",
       xp: 50,
-      description: "Préparer un compte de test avec des droits adaptés.",
+      title: "Organiser Active Directory",
+      description: "Concevoir une arborescence claire pour une PME fictive.",
       steps: [
-        "Identifier l'unité d'organisation prévue.",
-        "Créer un compte de test avec un nom explicite.",
-        "Associer le compte au groupe adapté.",
-        "Vérifier les permissions avec un compte standard.",
-        "Documenter le résultat et les contrôles réalisés."
+        "Créer des OU distinctes pour les utilisateurs et les ordinateurs.",
+        "Séparer les comptes utilisateurs et les comptes d'administration.",
+        "Définir des groupes selon les besoins d'accès.",
+        "Documenter les choix et le principe du moindre privilège."
       ]
     },
     {
       id: "mission-dns",
-      title: "Résoudre un incident DNS",
       category: "Réseau",
-      difficulty: "Intermédiaire",
-      xp: 65,
-      description: "Le poste accède à une adresse IP mais ne résout plus les noms.",
+      difficulty: "Débutant",
+      xp: 40,
+      title: "Diagnostiquer un problème DNS",
+      description: "Un poste joint le réseau mais ne résout plus les noms internes.",
       steps: [
-        "Vérifier l'adresse IP, le masque et la passerelle.",
-        "Identifier le serveur DNS configuré.",
-        "Comparer la connectivité IP et la résolution de noms.",
-        "Examiner les enregistrements et journaux disponibles.",
-        "Documenter la cause uniquement si elle est confirmée."
-      ]
-    },
-    {
-      id: "mission-dhcp",
-      title: "Diagnostiquer un incident DHCP",
-      category: "Réseau",
-      difficulty: "Intermédiaire",
-      xp: 65,
-      description: "Un poste ne reçoit pas la configuration réseau attendue.",
-      steps: [
-        "Vérifier le lien réseau et le VLAN du poste.",
-        "Examiner l'adresse, le masque et la passerelle reçus.",
-        "Contrôler l'étendue DHCP et les baux disponibles.",
-        "Vérifier un éventuel relais DHCP et les journaux.",
-        "Rédiger une conclusion et les prochaines vérifications."
-      ]
-    },
-    {
-      id: "mission-backup",
-      title: "Valider une restauration",
-      category: "Sécurité",
-      difficulty: "Avancé",
-      xp: 90,
-      description: "Vérifier qu'une sauvegarde peut réellement être restaurée.",
-      steps: [
-        "Identifier la sauvegarde attendue et sa date.",
-        "Contrôler le résultat du dernier job.",
-        "Restaurer un fichier de test dans un emplacement séparé.",
-        "Vérifier l'intégrité et l'accessibilité du fichier restauré.",
-        "Documenter le résultat et les mesures correctives éventuelles."
-      ]
-    },
-    {
-      id: "mission-linux",
-      title: "Service Linux indisponible",
-      category: "Linux",
-      difficulty: "Intermédiaire",
-      xp: 60,
-      description: "Un service fictif ne démarre plus après un redémarrage.",
-      steps: [
-        "Consulter l'état du service.",
-        "Examiner les journaux autour de l'heure de l'incident.",
-        "Contrôler la configuration et les permissions.",
-        "Vérifier les dépendances et l'espace disque.",
-        "Documenter une correction proposée et son risque."
-      ]
-    },
-    {
-      id: "mission-docker",
-      title: "Conteneur applicatif indisponible",
-      category: "Docker",
-      difficulty: "Avancé",
-      xp: 85,
-      description: "Un service conteneurisé fictif ne répond plus.",
-      steps: [
-        "Examiner l'état du conteneur simulé.",
-        "Lire les événements et journaux affichés.",
-        "Vérifier les ports et le réseau simulés.",
-        "Contrôler les volumes et paramètres de configuration.",
-        "Proposer une correction et une vérification après intervention."
+        "Vérifier la configuration IP du poste.",
+        "Contrôler l'adresse du serveur DNS configuré.",
+        "Comparer la résolution d'un nom interne et d'une adresse IP.",
+        "Documenter le diagnostic sans modifier de service sans autorisation."
       ]
     },
     {
       id: "mission-vlan",
-      title: "Concevoir une segmentation VLAN",
       category: "Réseau",
-      difficulty: "Avancé",
-      xp: 90,
-      description: "Séparer logiquement les postes clients et techniciens.",
+      difficulty: "Intermédiaire",
+      xp: 60,
+      title: "Préparer une segmentation VLAN",
+      description: "Séparer les utilisateurs, les serveurs et l'administration.",
       steps: [
-        "Décrire les besoins et les flux autorisés.",
-        "Choisir les identifiants VLAN.",
-        "Proposer un plan d'adressage IP.",
-        "Définir le besoin de routage entre les VLAN.",
+        "Définir les besoins de chaque zone.",
+        "Proposer un plan d'adressage distinct.",
+        "Lister les flux qui doivent être autorisés.",
         "Prévoir des tests de connectivité et de filtrage."
       ]
     },
     {
-      id: "mission-monitor",
-      title: "Analyser une alerte de supervision",
-      category: "Supervision",
+      id: "mission-firewall",
+      category: "Cybersécurité",
       difficulty: "Intermédiaire",
       xp: 70,
-      description: "Une métrique fictive indique une charge anormale.",
+      title: "Réduire les flux autorisés",
+      description: "Établir des règles de filtrage adaptées à une petite entreprise.",
       steps: [
-        "Vérifier la durée et l'évolution de l'alerte.",
-        "Comparer CPU, mémoire et espace disque.",
-        "Consulter les événements autour de l'incident.",
-        "Estimer l'impact sur le service.",
-        "Rédiger les constatations et les actions à suivre."
+        "Identifier les services réellement nécessaires.",
+        "Définir les sources et destinations légitimes.",
+        "Refuser les flux inutiles.",
+        "Prévoir une procédure de validation et de retour arrière."
+      ]
+    },
+    {
+      id: "mission-backup",
+      category: "Sauvegarde",
+      difficulty: "Intermédiaire",
+      xp: 70,
+      title: "Plan de sauvegarde d'une PME",
+      description: "Préparer une stratégie de sauvegarde documentée.",
+      steps: [
+        "Identifier les données critiques.",
+        "Définir fréquence, rétention et emplacement des copies.",
+        "Protéger les accès aux sauvegardes.",
+        "Planifier un test de restauration et consigner le résultat."
+      ]
+    },
+    {
+      id: "mission-logs",
+      category: "Cybersécurité",
+      difficulty: "Intermédiaire",
+      xp: 70,
+      title: "Analyser des journaux fictifs",
+      description: "Repérer des événements inhabituels dans un jeu de journaux pédagogique.",
+      steps: [
+        "Relever les événements et leurs horaires.",
+        "Comparer les événements aux activités attendues.",
+        "Identifier les éléments nécessitant une vérification.",
+        "Rédiger une synthèse factuelle sans accuser une personne sans preuve."
+      ]
+    },
+    {
+      id: "mission-patching",
+      category: "Sécurité",
+      difficulty: "Intermédiaire",
+      xp: 60,
+      title: "Préparer une campagne de mises à jour",
+      description: "Réduire les risques liés aux systèmes non corrigés.",
+      steps: [
+        "Inventorier les systèmes et versions.",
+        "Évaluer les priorités et les dépendances.",
+        "Tester les mises à jour dans un environnement adapté.",
+        "Prévoir sauvegarde, fenêtre de maintenance et vérifications."
+      ]
+    },
+    {
+      id: "mission-docker",
+      category: "Docker",
+      difficulty: "Intermédiaire",
+      xp: 60,
+      title: "Sécuriser un service conteneurisé",
+      description: "Examiner la configuration d'un service fictif.",
+      steps: [
+        "Identifier les ports publiés.",
+        "Examiner les données persistantes et leurs permissions.",
+        "Réduire les privilèges et les accès inutiles.",
+        "Définir une procédure de mise à jour et de sauvegarde."
+      ]
+    },
+    {
+      id: "mission-incident",
+      category: "Cybersécurité",
+      difficulty: "Avancé",
+      xp: 100,
+      title: "Gérer un incident de sécurité",
+      description: "Structurer la prise en charge d'une alerte fictive.",
+      steps: [
+        "Recueillir les faits et l'heure de détection.",
+        "Alerter les interlocuteurs prévus par la procédure.",
+        "Limiter les risques selon les consignes de l'organisation.",
+        "Préserver les éléments utiles et rédiger un compte rendu."
+      ]
+    },
+    {
+      id: "mission-restoration",
+      category: "Sauvegarde",
+      difficulty: "Avancé",
+      xp: 90,
+      title: "Préparer une reprise après incident",
+      description: "Établir un plan de remise en service d'un serveur fictif.",
+      steps: [
+        "Identifier les services prioritaires.",
+        "Vérifier les sauvegardes disponibles.",
+        "Définir un ordre de restauration et les dépendances.",
+        "Valider les services et documenter les résultats."
+      ]
+    },
+    {
+      id: "mission-accounts",
+      category: "Windows Server",
+      difficulty: "Intermédiaire",
+      xp: 60,
+      title: "Réviser les droits d'accès",
+      description: "Réduire les autorisations excessives dans une organisation fictive.",
+      steps: [
+        "Lister les ressources et les groupes.",
+        "Comparer les droits aux besoins professionnels.",
+        "Supprimer les accès devenus inutiles après validation.",
+        "Documenter les modifications et les responsables."
+      ]
+    },
+    {
+      id: "mission-documentation",
+      category: "Documentation",
+      difficulty: "Débutant",
+      xp: 40,
+      title: "Rédiger une fiche d'exploitation",
+      description: "Produire une documentation utile pour l'équipe informatique.",
+      steps: [
+        "Décrire le rôle du service.",
+        "Noter les dépendances et les accès autorisés.",
+        "Documenter les vérifications courantes.",
+        "Ajouter les procédures d'escalade et de restauration."
       ]
     }
   ],
 
   questions: [
     {
-      q: "Quel service gère les identités d'un domaine Windows ?",
-      answers: ["DHCP", "AD DS", "NAT", "NTP"],
+      q: "Quel est le rôle principal de DNS ?",
+      answers: [
+        "Attribuer automatiquement une adresse IP",
+        "Associer des noms à des informations réseau",
+        "Chiffrer tous les fichiers du poste",
+        "Remplacer le pare-feu"
+      ],
       correct: 1,
-      explanation: "AD DS centralise les identités et ressources d'un domaine."
+      explanation: "DNS permet notamment de résoudre des noms de domaine ou des noms internes en informations réseau."
     },
     {
-      q: "Quel service distribue automatiquement les paramètres IP ?",
-      answers: ["DNS", "SSH", "DHCP", "SNMP"],
-      correct: 2,
-      explanation: "DHCP distribue l'adresse IP et d'autres paramètres réseau."
-    },
-    {
-      q: "À quoi sert principalement DNS ?",
-      answers: ["À résoudre des noms", "À créer des utilisateurs", "À chiffrer un disque", "À sauvegarder une VM"],
+      q: "Quel principe consiste à donner uniquement les droits nécessaires ?",
+      answers: [
+        "Le moindre privilège",
+        "La disponibilité maximale",
+        "La réplication systématique",
+        "Le partage anonyme"
+      ],
       correct: 0,
-      explanation: "DNS permet notamment de résoudre les noms en informations réseau."
+      explanation: "Le moindre privilège limite les droits à ce qui est nécessaire pour accomplir une tâche."
     },
     {
-      q: "Que représente un préfixe IPv4 /24 ?",
-      answers: ["24 hôtes", "24 bits réseau", "24 VLAN", "24 routeurs"],
+      q: "Quel est l'objectif d'une restauration de sauvegarde testée ?",
+      answers: [
+        "Augmenter la taille du disque",
+        "Prouver que les données peuvent être récupérées",
+        "Désactiver les journaux",
+        "Supprimer les comptes utilisateurs"
+      ],
       correct: 1,
-      explanation: "Un /24 signifie que 24 bits sont consacrés au préfixe réseau."
+      explanation: "Un test permet de vérifier que les données sont récupérables et que la procédure fonctionne."
     },
     {
-      q: "Quelle commande Linux affiche les interfaces et leurs adresses IP ?",
-      answers: ["ip addr", "mkdir", "whoami", "shutdown"],
+      q: "À quoi sert une règle de pare-feu ?",
+      answers: [
+        "Définir quels flux réseau sont autorisés ou refusés",
+        "Remplacer les mises à jour",
+        "Créer des sauvegardes automatiquement dans tous les cas",
+        "Attribuer des noms aux utilisateurs"
+      ],
       correct: 0,
-      explanation: "ip addr affiche les interfaces réseau et leurs adresses."
+      explanation: "Le pare-feu applique une politique de filtrage aux communications réseau."
     },
     {
-      q: "Quel principe limite les permissions d'un compte ?",
-      answers: ["Compte partagé", "Administrateur partout", "Moindre privilège", "Désactivation des mises à jour"],
-      correct: 2,
-      explanation: "Le moindre privilège limite les droits au besoin réel."
+      q: "Quel élément permet de conserver des données de conteneur au-delà de son cycle de vie ?",
+      answers: [
+        "Un volume persistant",
+        "Une adresse MAC seule",
+        "Un port DNS",
+        "Une règle GPO"
+      ],
+      correct: 0,
+      explanation: "Un volume Docker permet de conserver les données indépendamment du conteneur."
     },
     {
-      q: "Un snapshot remplace-t-il une sauvegarde indépendante ?",
-      answers: ["Toujours", "Non", "Uniquement sous Linux", "Uniquement en production"],
+      q: "Que faire en premier face à une alerte de sécurité crédible ?",
+      answers: [
+        "Supprimer tous les journaux",
+        "Suivre la procédure d'incident et alerter les personnes responsables",
+        "Publier les données de l'entreprise",
+        "Désactiver définitivement toutes les sauvegardes"
+      ],
       correct: 1,
-      explanation: "Un snapshot peut dépendre de l'environnement et du stockage d'origine."
+      explanation: "Il faut appliquer la procédure prévue, alerter les responsables et préserver les éléments utiles."
     },
     {
-      q: "Quel équipement achemine les paquets entre réseaux IP ?",
-      answers: ["Clavier", "Routeur", "Écran", "Imprimante"],
+      q: "Quel service distribue automatiquement une configuration IP ?",
+      answers: ["DNS", "DHCP", "HTTP", "SSH"],
       correct: 1,
-      explanation: "Un routeur achemine les paquets entre différents réseaux."
+      explanation: "DHCP peut fournir une adresse IP, un masque, une passerelle et des serveurs DNS."
     },
     {
-      q: "Quel outil permet de consulter les journaux systemd ?",
-      answers: ["journalctl", "mkdir", "format", "cd"],
+      q: "Pourquoi appliquer les mises à jour de sécurité ?",
+      answers: [
+        "Pour corriger des vulnérabilités connues",
+        "Pour rendre tous les services publics",
+        "Pour supprimer les comptes de secours",
+        "Pour empêcher les sauvegardes"
+      ],
       correct: 0,
-      explanation: "journalctl affiche les journaux du système."
+      explanation: "Les correctifs réduisent l'exposition aux vulnérabilités connues. Ils doivent être testés et déployés de manière maîtrisée."
     },
     {
-      q: "Quel est l'intérêt principal d'un volume Docker ?",
-      answers: ["Conserver les données", "Remplacer DNS", "Créer un VLAN", "Remplacer le pare-feu"],
+      q: "Quel élément est utile pour reconstituer une chronologie d'incident ?",
+      answers: [
+        "Les journaux horodatés",
+        "Le fond d'écran",
+        "La couleur du boîtier",
+        "Le nom du fabricant du clavier"
+      ],
       correct: 0,
-      explanation: "Les volumes conservent les données au-delà du cycle de vie d'un conteneur."
+      explanation: "Les journaux horodatés peuvent aider à reconstruire une chronologie, à condition de vérifier leur fiabilité et leur contexte."
     },
     {
-      q: "Quel est le rôle d'un pare-feu ?",
-      answers: ["Créer des comptes", "Filtrer les flux réseau", "Attribuer automatiquement les IP", "Remplacer les sauvegardes"],
-      correct: 1,
-      explanation: "Un pare-feu autorise ou bloque les flux selon des règles."
-    },
-    {
-      q: "Que signifie RTO ?",
-      answers: ["Objectif de temps de rétablissement", "Adresse du routeur", "Type de VLAN", "Journal DNS"],
+      q: "Pourquoi séparer le réseau d'administration du réseau utilisateur ?",
+      answers: [
+        "Pour réduire les accès directs aux interfaces sensibles",
+        "Pour empêcher toute sauvegarde",
+        "Pour rendre tous les comptes administrateurs",
+        "Pour supprimer le besoin de mots de passe"
+      ],
       correct: 0,
-      explanation: "Le RTO est l'objectif de durée de rétablissement d'un service."
+      explanation: "La segmentation réduit les possibilités d'accès aux équipements sensibles et facilite le contrôle des flux."
     },
     {
-      q: "Quel protocole permet une administration distante sécurisée ?",
-      answers: ["FTP non chiffré", "SSH", "Telnet", "HTTP seul"],
-      correct: 1,
-      explanation: "SSH fournit notamment un accès distant chiffré."
-    },
-    {
-      q: "Quel est l'intérêt d'un VLAN ?",
-      answers: ["Segmenter logiquement le réseau", "Augmenter la RAM", "Remplacer tous les routeurs", "Créer une sauvegarde"],
+      q: "Quel objectif relève de la disponibilité ?",
+      answers: [
+        "Un service reste accessible aux utilisateurs autorisés",
+        "Toutes les données sont publiques",
+        "Les fichiers peuvent être modifiés par n'importe qui",
+        "Les journaux sont supprimés immédiatement"
+      ],
       correct: 0,
-      explanation: "Un VLAN sépare logiquement des domaines de niveau 2."
+      explanation: "La disponibilité vise à maintenir l'accès aux services et aux données lorsque cela est nécessaire."
     },
     {
-      q: "Que faire avant une modification importante en production ?",
-      answers: ["Ne rien vérifier", "Supprimer les journaux", "Évaluer l'impact et préparer un retour arrière", "Désactiver les sauvegardes"],
-      correct: 2,
-      explanation: "Il faut anticiper l'impact, protéger les données et prévoir une restauration ou un retour arrière."
+      q: "Pourquoi documenter une intervention informatique ?",
+      answers: [
+        "Pour conserver la trace des actions et faciliter la maintenance",
+        "Pour éviter tous les tests",
+        "Pour partager tous les mots de passe",
+        "Pour remplacer la supervision"
+      ],
+      correct: 0,
+      explanation: "Une documentation précise facilite le suivi, le dépannage et la transmission des connaissances."
     }
-  ],
-
-  servers: [
-    { id: "srv-ad", name: "SRV-AD01", role: "AD DS / DNS", ip: "192.168.10.10", cpu: 24, ram: 47, disk: 39, status: "ok" },
-    { id: "srv-files", name: "SRV-FICHIERS", role: "Partages réseau", ip: "192.168.10.20", cpu: 36, ram: 62, disk: 71, status: "ok" },
-    { id: "srv-debian", name: "DEBIAN-DOCKER", role: "Services conteneurisés", ip: "192.168.10.30", cpu: 79, ram: 84, disk: 66, status: "warning" },
-    { id: "srv-app", name: "APP-TEST", role: "Application pédagogique", ip: "192.168.10.40", cpu: 0, ram: 0, disk: 0, status: "down" }
-  ],
-
-  dockerServices: [
-    { id: "web", name: "web-demo", image: "nginx:stable", port: "8080 → 80", status: "running", volume: "web-data", note: "Service web de démonstration." },
-    { id: "monitor", name: "monitor-demo", image: "monitoring-demo:1.0", port: "9090 → 9090", status: "running", volume: "monitor-data", note: "Métriques fictives de supervision." },
-    { id: "app", name: "app-demo", image: "app-demo:1.0", port: "3000 → 3000", status: "stopped", volume: "app-data", note: "Application pédagogique arrêtée." }
   ],
 
   securityScenarios: [
     {
-      id: "access",
-      title: "Compte avec des privilèges excessifs",
-      category: "Gestion des accès",
-      description: "Un compte de test dispose de droits administratifs alors qu'il doit uniquement consulter des fichiers.",
+      id: "bts-cyber-01",
+      category: "Sujet BTS — Hameçonnage",
+      title: "Sujet 1 — Courriel suspect dans une PME",
+      description: "Une salariée reçoit un courriel qui semble provenir du service informatique. Le message demande de saisir ses identifiants sur un site inhabituel. Le responsable vous demande de proposer une réponse adaptée.",
       options: [
-        "Conserver les droits pour éviter toute interruption.",
-        "Confirmer le besoin, réduire les droits au strict nécessaire et tester l'accès.",
-        "Partager le compte administrateur avec toute l'équipe."
+        "Cliquer sur le lien pour vérifier si la page fonctionne",
+        "Ne pas saisir les identifiants, signaler le message selon la procédure et conserver les informations utiles",
+        "Transférer le message à tous les collègues",
+        "Supprimer les journaux de messagerie"
       ],
       correct: 1,
-      explanation: "Il faut confirmer le besoin métier, appliquer le moindre privilège et vérifier que les tâches prévues restent possibles."
+      explanation: "Il faut éviter le lien, signaler le message et préserver les éléments utiles. Si des identifiants ont déjà été saisis, prévenir rapidement les responsables pour appliquer la procédure de sécurisation du compte."
     },
     {
-      id: "logs",
-      title: "Événement de sécurité inhabituel",
-      category: "Analyse d'incident",
-      description: "Des événements de connexion inhabituels apparaissent dans les journaux d'un système de test.",
+      id: "bts-cyber-02",
+      category: "Sujet BTS — Droits d'accès",
+      title: "Sujet 2 — Accès excessifs à un dossier partagé",
+      description: "Lors d'un audit interne, vous constatez que tous les utilisateurs peuvent modifier un dossier contenant des documents confidentiels. Le responsable métier confirme que seuls trois membres du service doivent pouvoir modifier les fichiers.",
       options: [
-        "Supprimer les journaux pour réduire le bruit.",
-        "Ignorer les événements sans vérification.",
-        "Préserver les journaux, établir une chronologie et suivre la procédure d'incident."
+        "Conserver les droits actuels pour éviter toute interruption",
+        "Rendre le dossier accessible à tous en lecture et écriture",
+        "Vérifier les besoins, définir les groupes autorisés, ajuster les permissions après validation et tester les accès",
+        "Supprimer le dossier immédiatement"
       ],
       correct: 2,
-      explanation: "La préservation des informations et la documentation de la chronologie facilitent une analyse défensive."
+      explanation: "Il faut appliquer le moindre privilège, valider les besoins avec le responsable, modifier les droits de manière maîtrisée et vérifier le résultat."
     },
     {
-      id: "firewall",
-      title: "Règle de pare-feu trop permissive",
-      category: "Filtrage réseau",
-      description: "Une règle de laboratoire autorise de nombreux flux qui ne sont pas nécessaires au service.",
+      id: "bts-cyber-03",
+      category: "Sujet BTS — Sauvegardes",
+      title: "Sujet 3 — Sauvegardes non vérifiées",
+      description: "Une PME effectue une copie quotidienne de ses fichiers sur un partage réseau. Aucun test de restauration n'a été réalisé depuis plusieurs mois. Vous devez identifier une amélioration prioritaire.",
       options: [
-        "Identifier les flux métier nécessaires, restreindre la règle et tester les accès attendus.",
-        "Autoriser tous les flux entrants.",
-        "Désactiver définitivement le pare-feu."
+        "Vérifier les journaux et réaliser un test de restauration contrôlé, puis améliorer la protection et la diversité des copies",
+        "Supprimer les anciennes copies sans contrôle",
+        "Donner à tous les utilisateurs le droit de supprimer les sauvegardes",
+        "Considérer la sauvegarde comme fiable puisqu'une tâche est planifiée"
       ],
       correct: 0,
-      explanation: "Le filtrage doit correspondre aux flux nécessaires et être validé par des tests contrôlés."
+      explanation: "Une tâche planifiée ne prouve pas qu'une restauration est possible. Il faut contrôler les résultats, tester la restauration et protéger les copies contre les suppressions ou compromissions."
+    },
+    {
+      id: "bts-cyber-04",
+      category: "Sujet BTS — Incident",
+      title: "Sujet 4 — Activité anormale sur un serveur",
+      description: "L'outil de supervision signale une activité inhabituelle sur un serveur de fichiers. Vous n'avez pas encore confirmé s'il s'agit d'un incident de sécurité. Quelle approche est la plus adaptée ?",
+      options: [
+        "Effacer les journaux afin de libérer de l'espace",
+        "Accuser immédiatement un utilisateur",
+        "Ignorer l'alerte tant que le serveur répond",
+        "Vérifier les éléments disponibles, noter les horaires, prévenir les responsables et suivre la procédure d'incident"
+      ],
+      correct: 3,
+      explanation: "Il faut vérifier les faits, conserver les éléments pertinents et appliquer la procédure. Les mesures de confinement dépendent du contexte et des consignes de l'organisation."
+    },
+    {
+      id: "bts-cyber-05",
+      category: "Sujet BTS — Pare-feu",
+      title: "Sujet 5 — Interface d'administration exposée",
+      description: "Une interface d'administration de serveur est accessible depuis un réseau qui n'a pas besoin de la gérer. Vous devez proposer une mesure de réduction du risque.",
+      options: [
+        "Autoriser l'accès depuis toutes les adresses",
+        "Restreindre l'accès aux postes ou au réseau d'administration autorisés et vérifier les règles de filtrage",
+        "Désactiver les mises à jour",
+        "Partager le compte administrateur avec tous les salariés"
+      ],
+      correct: 1,
+      explanation: "L'accès d'administration doit être limité aux sources nécessaires, avec une authentification adaptée, une journalisation et une vérification régulière des règles."
+    },
+    {
+      id: "bts-cyber-06",
+      category: "Sujet BTS — Mises à jour",
+      title: "Sujet 6 — Serveur non corrigé",
+      description: "L'inventaire montre qu'un serveur utilise une version qui ne reçoit plus de correctifs de sécurité. Le service est important pour l'entreprise. Quelle démarche convient ?",
+      options: [
+        "Le laisser fonctionner sans évaluation",
+        "Le déconnecter définitivement sans prévenir personne",
+        "Évaluer le risque, vérifier les dépendances, préparer une migration ou mise à niveau, tester et prévoir un retour arrière",
+        "Désactiver la supervision"
+      ],
+      correct: 2,
+      explanation: "La remédiation doit être planifiée et documentée : évaluation du risque, compatibilité, tests, sauvegarde, fenêtre de maintenance et validation."
+    }
+  ],
+
+  servers: [
+    {
+      id: "srv-ad",
+      name: "SRV-AD01",
+      role: "Active Directory / DNS",
+      ip: "192.168.10.10",
+      status: "ok",
+      cpu: 24,
+      ram: 48,
+      disk: 42
+    },
+    {
+      id: "srv-files",
+      name: "SRV-FICHIERS",
+      role: "Partages réseau",
+      ip: "192.168.10.20",
+      status: "ok",
+      cpu: 31,
+      ram: 55,
+      disk: 76
+    },
+    {
+      id: "srv-monitor",
+      name: "SRV-MONITOR",
+      role: "Supervision",
+      ip: "192.168.10.30",
+      status: "warning",
+      cpu: 78,
+      ram: 69,
+      disk: 61
+    },
+    {
+      id: "srv-backup",
+      name: "SRV-BACKUP",
+      role: "Sauvegardes",
+      ip: "192.168.10.40",
+      status: "down",
+      cpu: 0,
+      ram: 0,
+      disk: 0
+    }
+  ],
+
+  dockerServices: [
+    {
+      id: "dozzle",
+      name: "Dozzle",
+      image: "amir20/dozzle:latest",
+      port: "8888",
+      volume: "docker.sock",
+      status: "running",
+      note: "Consultation des journaux de conteneurs — simulation uniquement."
+    },
+    {
+      id: "uptime-kuma",
+      name: "Uptime Kuma",
+      image: "louislam/uptime-kuma:1",
+      port: "3001",
+      volume: "uptime-data",
+      status: "running",
+      note: "Surveillance de disponibilité — simulation uniquement."
+    },
+    {
+      id: "prometheus",
+      name: "Prometheus",
+      image: "prom/prometheus:latest",
+      port: "9090",
+      volume: "prometheus-data",
+      status: "stopped",
+      note: "Collecte de métriques — simulation uniquement."
+    },
+    {
+      id: "grafana",
+      name: "Grafana",
+      image: "grafana/grafana:latest",
+      port: "3000",
+      volume: "grafana-data",
+      status: "running",
+      note: "Visualisation de métriques — simulation uniquement."
+    },
+    {
+      id: "glpi",
+      name: "GLPI",
+      image: "glpi/glpi:latest",
+      port: "8080",
+      volume: "glpi-data",
+      status: "stopped",
+      note: "Gestion de parc et tickets — simulation uniquement."
     }
   ],
 
   dockerIncidents: [
     {
-      id: "port",
-      title: "Port inaccessible",
-      description: "Le conteneur est indiqué comme démarré, mais le service ne répond pas sur le port attendu.",
-      checks: ["Vérifier l'état du conteneur.", "Contrôler le port publié et le port interne.", "Examiner les journaux simulés.", "Vérifier le réseau et le service applicatif."]
+      id: "docker-port",
+      title: "Un service web ne répond plus",
+      description: "Le conteneur semble actif, mais l'application n'est pas accessible depuis le navigateur.",
+      checks: [
+        "Vérifier l'état du conteneur.",
+        "Vérifier le port publié et le port d'écoute de l'application.",
+        "Consulter les journaux du service.",
+        "Vérifier les règles de filtrage et les dépendances."
+      ]
     },
     {
-      id: "volume",
-      title: "Données manquantes",
-      description: "Après la recréation d'un conteneur fictif, des données semblent absentes.",
-      checks: ["Identifier le volume attendu.", "Vérifier le montage configuré.", "Contrôler le chemin utilisé par l'application.", "Prévoir une restauration contrôlée depuis une sauvegarde."]
+      id: "docker-volume",
+      title: "Les données disparaissent après recréation",
+      description: "Les paramètres de l'application sont perdus lorsqu'un conteneur est recréé.",
+      checks: [
+        "Vérifier si les données sont stockées dans un volume persistant.",
+        "Contrôler le chemin de montage.",
+        "Vérifier les permissions sur le répertoire.",
+        "Préparer une sauvegarde et tester une restauration."
+      ]
     },
     {
-      id: "restart",
-      title: "Conteneur en redémarrage",
-      description: "Le service simulé redémarre de manière répétée.",
-      checks: ["Consulter les journaux.", "Examiner la configuration et les variables.", "Contrôler les dépendances et ressources.", "Documenter la cause après confirmation."]
+      id: "docker-logs",
+      title: "Redémarrages répétés",
+      description: "Un service simulé redémarre fréquemment et son état devient instable.",
+      checks: [
+        "Consulter les journaux horodatés.",
+        "Vérifier les variables de configuration.",
+        "Contrôler les dépendances et les ressources disponibles.",
+        "Documenter le diagnostic avant toute modification."
+      ]
+    },
+    {
+      id: "docker-security",
+      title: "Port d'administration trop exposé",
+      description: "Un service fictif publie un port de gestion qui ne devrait être accessible que par l'équipe informatique.",
+      checks: [
+        "Identifier le port et les interfaces d'écoute.",
+        "Définir les sources qui ont réellement besoin d'accéder au service.",
+        "Restreindre l'exposition dans la configuration prévue.",
+        "Vérifier le résultat et documenter la modification."
+      ]
     }
   ]
 };
